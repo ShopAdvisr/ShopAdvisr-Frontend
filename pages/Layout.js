@@ -1,12 +1,21 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { NativeBaseProvider, View, Text, Heading } from 'native-base';
-import { NativeRouter, Route, Link } from 'react-router-native';
+import { NativeBaseProvider, View, Text, Heading, Button } from 'native-base';
+import {
+  NativeRouter,
+  Route,
+  Link,
+  BackButton,
+  useHistory,
+} from 'react-router-native';
 
 const Layout = ({ children }) => {
+  const history = useHistory();
   return (
     <>
       <View style={styles.container} w="100%" h="100%">
+        <BackButton />
+        <Button onPress={() => history.goBack()} />
         <Link to="/">
           <Text>Home</Text>
         </Link>
@@ -20,7 +29,7 @@ const Layout = ({ children }) => {
           <Text>Id 123</Text>
         </Link>
 
-        <View bgColor="primary.100" m={4}>
+        <View bgColor="primary.100" m={4} p={4}>
           <Heading size="2xl">ShopAdvisr</Heading>
           {children}
         </View>

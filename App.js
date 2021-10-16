@@ -1,6 +1,6 @@
 import React from 'react';
 import { NativeBaseProvider, Box, Text, View } from 'native-base';
-import { NativeRouter, Route, Link } from 'react-router-native';
+import { NativeRouter, Route } from 'react-router-native';
 import Layout from 'root/pages/Layout';
 import HomePage from 'root/pages/HomePage';
 import SearchPage from 'root/pages/SearchPage';
