@@ -15,7 +15,7 @@ export default function App() {
         <NativeRouter>
           <Layout>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/home" component={SearchPage} />
+            <Route exact path="/search" component={SearchPage} />
             <Route exact path="/cart" component={CartPage} />
             <Route exact path="/settings" component={SettingsPage} />
             <Route exact path="/id/:id" component={ItemPage} />
