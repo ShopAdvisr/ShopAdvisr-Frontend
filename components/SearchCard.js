@@ -3,6 +3,7 @@ import {
   View,
   Pressable,
   Box,
+  Icon,
   IconButton,
   Image,
   Center,
@@ -33,7 +34,10 @@ const SearchCard = props => {
               <Text {...styles.cardText}>{productInfo.name}</Text>
             </Center>
             <Center ml="auto">
-              <PlusIcon />
+              <IconButton
+                icon={<Icon as={PlusIcon} />}
+                borderRadius="full"
+              />
             </Center>
           </Box>
         )}
