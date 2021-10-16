@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, ScrollView} from 'native-base';
-import {SearchCard} from 'components/SearchCard';
+import { View, ScrollView } from 'native-base';
+import { SearchCard } from 'root/components/SearchCard';
 
 const SearchPage = () => {
   const dummySearchResults = ['apple', 'bread', 'milk'];
@@ -10,7 +10,7 @@ const SearchPage = () => {
       <View>
         <ScrollView>
           {dummySearchResults.map(result => (
-            <SearchCard></SearchCard>
+            <SearchCard />
           ))}
         </ScrollView>
       </View>
