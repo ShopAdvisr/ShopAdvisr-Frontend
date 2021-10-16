@@ -19,8 +19,8 @@ const styles = {
     bg: 'muted.100',
     shadow: 3,
     p: 5,
-    my: 1
-  }
+    my: 1,
+  },
 };
 
 export default SearchCard;
