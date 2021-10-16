@@ -15,6 +15,10 @@ const SearchPage = () => {
     { id: 7, name: 'cum' },
     { id: 8, name: 'lol' },
     { id: 9, name: 'orz' },
+    { id: 10, name: 'orz' },
+    { id: 11, name: 'orz' },
+    { id: 12, name: 'orz' },
+    { id: 13, name: 'orz' },
   ];
 
   const [showProduct, setShowProduct] = useState(false);
@@ -44,6 +48,13 @@ const SearchPage = () => {
 
 const styles = {
   container: {},
+  scrollContainer: {
+    h: "92%",
+    p: 2,
+    bgColor: "teal.100",
+    m: 0,
+    px: 4,
+  },
 };
 
 export default SearchPage;

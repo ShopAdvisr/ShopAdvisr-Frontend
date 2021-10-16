@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
           </Center>
         </View>
 
-        <View m={4} p={4}>
+        <View {...styles.viewContainer}>
           {children}
         </View>
       </View>
@@ -52,6 +52,9 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
+  viewContainer: {
+    p: 4,
+  }
 };
 
 export default Layout;

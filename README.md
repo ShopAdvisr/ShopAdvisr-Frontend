@@ -9,6 +9,11 @@ Install dependencies
 $ npm i
 ```
 
+Link
+```
+$ react-native link react-native-linear-gradient
+```
+
 Start the Metro server with
 ```
 $ npm start

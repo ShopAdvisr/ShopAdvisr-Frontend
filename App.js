@@ -7,9 +7,15 @@ import SearchPage from 'root/pages/SearchPage';
 import CartPage from 'root/pages/CartPage';
 import SettingsPage from 'root/pages/SettingsPage';
 
+const nativeBaseConfig = {
+  dependencies: {
+    'linear-gradient': require('react-native-linear-gradient').default
+  }
+};
+
 export default function App() {
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider config={nativeBaseConfig}>
       <View>
         <NativeRouter>
           <Layout>
