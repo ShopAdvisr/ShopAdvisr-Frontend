@@ -7,7 +7,7 @@ const CartPage = ({ children }) => {
     <>
       <Box>
         Layout Page
-        <main>{children}</main>
+        {children}
       </Box>
     </>
   );
