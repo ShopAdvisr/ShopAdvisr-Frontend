@@ -9,11 +9,9 @@ import {
   Center,
   Text,
 } from 'native-base';
-import { useHistory } from 'react-router-native';
 import { PlusIcon } from 'root/components/Icon';
 
 const SearchCard = ({ productInfo, enableShowProduct }) => {
-  const history = useHistory();
 
   return (
     <>

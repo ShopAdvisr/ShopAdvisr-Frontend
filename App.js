@@ -6,6 +6,7 @@ import HomePage from 'root/pages/HomePage';
 import SearchPage from 'root/pages/SearchPage';
 import CartPage from 'root/pages/CartPage';
 import SettingsPage from 'root/pages/SettingsPage';
+import CameraPage from 'root/pages/CameraPage';
 import { LogBox } from 'react-native';
 
 const nativeBaseConfig = {
@@ -26,6 +27,7 @@ export default function App() {
             <Route exact path="/search" component={SearchPage} />
             <Route exact path="/cart" component={CartPage} />
             <Route exact path="/settings" component={SettingsPage} />
+            <Route exact path="/camera" component={CameraPage} />
           </Layout>
         </NativeRouter>
       </View>

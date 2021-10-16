@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-native';
 import {
   View,
   Box,
@@ -28,13 +29,16 @@ import AudioRecorderPlayer, {
 } from 'react-native-audio-recorder-player';
 import { PermissionsAndroid } from 'react-native';
 
-const audioRecorderPlayer = new AudioRecorderPlayer();
-audioRecorderPlayer.setSubscriptionDuration(0.09);
 import Camera from 'root/components/Camera';
 import Graph from 'root/components/Line-chart';
 
+const audioRecorderPlayer = new AudioRecorderPlayer();
+audioRecorderPlayer.setSubscriptionDuration(0.09);
+
 const SearchBar = props => {
   const { itemName } = props;
+  const history = useHistory();
+
   const [showModal, setShowModal] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [loading, setLoading] = useState(false);
@@ -145,7 +149,7 @@ const SearchBar = props => {
               <IconButton onPress={() => clickRecord()} borderRadius="full">
                 <Icon as={MicrophoneIcon} style={{ textAlign: 'center' }} />
               </IconButton>
-              <IconButton borderRadius="full">
+              <IconButton onPress={() => {console.log('clicked camera'); history.push('/camera');}} borderRadius="full">
                 <Icon as={CameraIcon} style={{ textAlign: 'center' }} />
               </IconButton>
             </Flex>

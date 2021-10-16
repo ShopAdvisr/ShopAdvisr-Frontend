@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'native-base';
 import { RNCamera } from 'react-native-camera';
 
-const Camera = () => {
+const CameraPage = () => {
   const takePicture = async cameraRef => {
     if (cameraRef == null) {
       return;
@@ -30,4 +30,4 @@ const Camera = () => {
   );
 };
 
-export default Camera;
+export default CameraPage;

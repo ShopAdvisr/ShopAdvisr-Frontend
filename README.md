@@ -24,3 +24,12 @@ Run for android
 $ npm run android
 ```
 
+## Building for production
+
+The variables for signing are read from `~/.gradle/gradle.properties`, so ensure your file has the following:
+```
+SHOPADVISR_STORE_FILE=release.keystore
+SHOPADVISR_KEY_ALIAS=release
+SHOPADVISR_STORE_PASSWORD=
+SHOPADVISR_KEY_PASSWORD=
+```
