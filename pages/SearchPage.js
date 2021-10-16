@@ -27,7 +27,8 @@ const SearchPage = () => {
   const enableShowProduct = productInfo => {
     _setShowProduct(true);
     setClickedProductInfo(productInfo);
-  }
+  };
+
   const disableShowProduct = () => _setShowProduct(false);
 
   return (
