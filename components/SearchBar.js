@@ -9,13 +9,12 @@ import AudioRecorderPlayer, {
   AudioSourceAndroidType,
 } from 'react-native-audio-recorder-player';
 import { PermissionsAndroid } from 'react-native';
+const audioRecorderPlayer = new AudioRecorderPlayer();
+audioRecorderPlayer.setSubscriptionDuration(0.09);
 
 const SearchBar = props => {
   const { itemName } = props;
   const [showModal, setShowModal] = useState(false);
-  const audioRecorderPlayer = new AudioRecorderPlayer();
-  audioRecorderPlayer.setSubscriptionDuration(0.09);
-
   const onStartRecord = async () => {
     try {
       /*
@@ -65,6 +64,9 @@ const SearchBar = props => {
     try {
       console.log('audioSet', audioSet);
       const uri = await audioRecorderPlayer.startRecorder(path, audioSet);
+      audioRecorderPlayer.addRecordBackListener(e => {
+        console.log('Recording', e.currentPosition);
+      });
       console.log(`uri: ${uri}`);
     } catch (err) {
       console.log(err);
@@ -74,6 +76,7 @@ const SearchBar = props => {
 
   const onStopRecord = async () => {
     const result = await audioRecorderPlayer.stopRecorder();
+    audioRecorderPlayer.removeRecordBackListener();
   };
 
   const clickRecord = async () => {
