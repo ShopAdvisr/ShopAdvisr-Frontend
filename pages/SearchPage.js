@@ -31,9 +31,7 @@ const SearchPage = () => {
 };
 
 const styles = {
-  container: {
-    mx: 5,
-  },
+  container: {}
 };
 
 export default SearchPage;
