@@ -1,28 +1,23 @@
 import React from 'react';
-import { View, Pressable, Box, Image, Center, Text } from 'native-base';
+import { View, Pressable, Box, IconButton, Image, Center, Text } from 'native-base';
+import { useHistory } from 'react-router-native';
 import { PlusIcon } from 'root/components/Icon';
 
 const SearchCard = props => {
-  const { itemName } = props;
+  const { productInfo } = props;
+
+  const history = useHistory();
 
   return (
     <>
       <Pressable
-        onPress={() => {
-          console.log('button pressed');
-        }}>
+        onPress={() => {history.push(`/product/${productInfo.id}`)}}
+      >
         {pressableEvents => (
           <Box {...styles.card(pressableEvents)}>
-            <Image
-              source={{ uri: 'https://wallpaperaccess.com/full/317501.jpg' }}
-              {...styles.cardProfile}
-            />
-            <Center>
-              <Text {...styles.cardText}>{itemName}</Text>
-            </Center>
-            <Center ml="auto">
-              <PlusIcon />
-            </Center>
+            <Image source={{uri: "https://wallpaperaccess.com/full/317501.jpg"}} {...styles.cardProfile} />
+            <Center><Text {...styles.cardText}>{productInfo.name}</Text></Center>
+            <Center ml='auto'><PlusIcon /></Center>
           </Box>
         )}
       </Pressable>

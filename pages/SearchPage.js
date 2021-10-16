@@ -5,15 +5,15 @@ import SearchBar from 'root/components/SearchBar';
 
 const SearchPage = () => {
   const dummySearchResults = [
-    'apple',
-    'bread',
-    'milk',
-    'pee',
-    'poo',
-    'lmao',
-    'cum',
-    'lol',
-    'orz',
+    { id: 1, name: 'apple' },
+    { id: 2, name: 'bread' },
+    { id: 3, name: 'milk' },
+    { id: 4, name: 'pee' },
+    { id: 5, name: 'poo' },
+    { id: 6, name: 'lmao' },
+    { id: 7, name: 'cum' },
+    { id: 8, name: 'lol' },
+    { id: 9, name: 'orz' },
   ];
 
   return (
@@ -22,7 +22,7 @@ const SearchPage = () => {
         <SearchBar />
         <ScrollView h="4/5">
           {dummySearchResults.map(result => (
-            <SearchCard itemName={result} key={result} />
+            <SearchCard productInfo={result} key={result.id} />
           ))}
         </ScrollView>
       </View>

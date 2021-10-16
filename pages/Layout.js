@@ -7,6 +7,7 @@ import {
   Heading,
   Button,
   Spacer,
+  Pressable,
 } from 'native-base';
 import {
   NativeRouter,
@@ -15,6 +16,7 @@ import {
   BackButton,
   useHistory,
 } from 'react-router-native';
+import { BackIcon } from 'root/components/Icon';
 
 const Layout = ({ children }) => {
   const history = useHistory();
@@ -22,7 +24,17 @@ const Layout = ({ children }) => {
     <>
       <View style={styles.container} w="100%" h="100%">
         <BackButton />
-        <Button onPress={() => history.goBack()} />
+        <Pressable
+          onPress={() => history.goBack()}
+        >
+          <BackIcon m={1} />
+        </Pressable>
+
+        <View m={4} p={4}>
+          <Heading size="2xl">ShopAdvisr</Heading>
+          {children}
+        </View>
+
         <Link to="/">
           <Text>Home</Text>
         </Link>
@@ -35,15 +47,18 @@ const Layout = ({ children }) => {
         <Link to="/settings">
           <Text>Settings</Text>
         </Link>
-        <Link to="/id/123">
+        <Link to="/product/123">
           <Text>Id 123</Text>
         </Link>
+<<<<<<< Updated upstream
 
         <View bgColor="primary.100" m={4} p={4}>
           <Heading size="2xl">ShopAdvisr</Heading>
           <Spacer />
           {children}
         </View>
+=======
+>>>>>>> Stashed changes
       </View>
     </>
   );
