@@ -24,12 +24,12 @@ const Layout = ({ children }) => {
   return (
     <>
       <View {...styles.container} w="100%" h="100%">
-        <BackButton/>
+        <BackButton />
         <View {...styles.headerContainer}>
           <Center>
             <IconButton
               onPress={() => history.goBack()}
-              icon={<Icon as={BackIcon}/>}
+              icon={<Icon as={BackIcon} />}
               borderRadius="full"
             />
           </Center>
@@ -52,7 +52,7 @@ const styles = {
     mt: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-  }
+  },
 };
 
 export default Layout;

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, Box, Text, Center, Input, Button, Modal } from 'native-base';
 import RNFetchBlob from 'rn-fetch-blob';
+import { micSearch } from '../services/application.services';
+import axios from 'axios';
 import AudioRecorderPlayer, {
   AVEncoderAudioQualityIOSType,
   AVEncodingOption,
@@ -9,23 +11,16 @@ import AudioRecorderPlayer, {
   AudioSourceAndroidType,
 } from 'react-native-audio-recorder-player';
 import { PermissionsAndroid } from 'react-native';
+import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 const audioRecorderPlayer = new AudioRecorderPlayer();
 audioRecorderPlayer.setSubscriptionDuration(0.09);
 
 const SearchBar = props => {
   const { itemName } = props;
   const [showModal, setShowModal] = useState(false);
+  const [searchText, setSearchText] = useState('');
   const onStartRecord = async () => {
     try {
-      /*
-      const grants = requestMultiple([
-        PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-        PERMISSIONS.READ_EXTERNAL_STORAGE,
-        PERMISSIONS.RECORD_AUDIO,
-      ]).then(statuses => {
-        console.log(statuses);
-      });
-      */
       const grants = await PermissionsAndroid.requestMultiple([
         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
@@ -91,6 +86,14 @@ const SearchBar = props => {
   const finishRecord = async () => {
     console.log('stop recording');
     await onStopRecord();
+    const dirs = RNFetchBlob.fs.dirs;
+    const path = `${dirs.CacheDir}/file.m4a`;
+    const data = await RNFetchBlob.fs.readFile(path, 'base64');
+    console.log(data);
+    const text = await micSearch(data);
+    setSearchText(text);
+    // RNFetchBlob.fetch('GET', 'https://shopadvisr.herokuapp.com')
+
     setShowModal(false);
   };
 
