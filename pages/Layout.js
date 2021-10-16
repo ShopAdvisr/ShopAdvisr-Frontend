@@ -24,9 +24,7 @@ const Layout = ({ children }) => {
     <>
       <View style={styles.container} w="100%" h="100%">
         <BackButton />
-        <Pressable
-          onPress={() => history.goBack()}
-        >
+        <Pressable onPress={() => history.goBack()}>
           <BackIcon m={1} />
         </Pressable>
 
@@ -50,15 +48,12 @@ const Layout = ({ children }) => {
         <Link to="/product/123">
           <Text>Id 123</Text>
         </Link>
-<<<<<<< Updated upstream
 
         <View bgColor="primary.100" m={4} p={4}>
           <Heading size="2xl">ShopAdvisr</Heading>
           <Spacer />
           {children}
         </View>
-=======
->>>>>>> Stashed changes
       </View>
     </>
   );

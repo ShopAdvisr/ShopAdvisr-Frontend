@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Box, Text, Center, Input, Button, Modal } from 'native-base';
+import RNFetchBlob from 'rn-fetch-blob';
 import AudioRecorderPlayer, {
   AVEncoderAudioQualityIOSType,
   AVEncodingOption,
@@ -7,6 +8,7 @@ import AudioRecorderPlayer, {
   AudioSet,
   AudioSourceAndroidType,
 } from 'react-native-audio-recorder-player';
+import { PermissionsAndroid } from 'react-native';
 
 const SearchBar = props => {
   const { itemName } = props;
@@ -15,7 +17,44 @@ const SearchBar = props => {
   audioRecorderPlayer.setSubscriptionDuration(0.09);
 
   const onStartRecord = async () => {
-    const path = 'record.m4a';
+    try {
+      /*
+      const grants = requestMultiple([
+        PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        PERMISSIONS.READ_EXTERNAL_STORAGE,
+        PERMISSIONS.RECORD_AUDIO,
+      ]).then(statuses => {
+        console.log(statuses);
+      });
+      */
+      const grants = await PermissionsAndroid.requestMultiple([
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+      ]);
+
+      console.log('write external stroage', grants);
+
+      if (
+        grants['android.permission.WRITE_EXTERNAL_STORAGE'] ===
+          PermissionsAndroid.RESULTS.GRANTED &&
+        grants['android.permission.READ_EXTERNAL_STORAGE'] ===
+          PermissionsAndroid.RESULTS.GRANTED &&
+        grants['android.permission.RECORD_AUDIO'] ===
+          PermissionsAndroid.RESULTS.GRANTED
+      ) {
+        console.log('Permissions granted');
+      } else {
+        console.log('All required permissions not granted');
+        return false;
+      }
+    } catch (err) {
+      console.warn(err);
+      return false;
+    }
+
+    const dirs = RNFetchBlob.fs.dirs;
+    const path = `${dirs.CacheDir}/file.m4a`;
     const audioSet = {
       AudioEncoderAndroid: AudioEncoderAndroidType.AAC,
       AudioSourceAndroid: AudioSourceAndroidType.MIC,
@@ -23,9 +62,14 @@ const SearchBar = props => {
       AVNumberOfChannelsKeyIOS: 2,
       AVFormatIDKeyIOS: AVEncodingOption.aac,
     };
-    console.log('audioSet', audioSet);
-    const uri = await audioRecorderPlayer.startRecorder(path, audioSet);
-    console.log(`uri: ${uri}`);
+    try {
+      console.log('audioSet', audioSet);
+      const uri = await audioRecorderPlayer.startRecorder(path, audioSet);
+      console.log(`uri: ${uri}`);
+    } catch (err) {
+      console.log(err);
+    }
+    return true;
   };
 
   const onStopRecord = async () => {
@@ -33,32 +77,37 @@ const SearchBar = props => {
   };
 
   const clickRecord = async () => {
-    await onStartRecord();
+    console.log('clicked');
+    const res = await onStartRecord();
+    if (!res) {
+      return;
+    }
     setShowModal(true);
   };
 
   const finishRecord = async () => {
-    onStopRecord();
+    console.log('stop recording');
+    await onStopRecord();
     setShowModal(false);
   };
 
   return (
     <>
-      <Center>
+      <Center bg="muted.100">
         <Input
           {...styles.searchBar}
-          variant="filled"
+          variant="rounded"
           placeholder="Ask me anything"
           size="lg"
           InputRightElement={<Button onPress={() => clickRecord()}>Mic</Button>}
         />
       </Center>
 
-      <Modal isOpen={showModal} onClose={() => finishRecord()}>
+      <Modal isOpen={showModal}>
         <Modal.Content>
           <Modal.Header>Speak your thoughts</Modal.Header>
           <Modal.Body>
-            <Button onPress={() => setShowModal(false)}>Stop Recording</Button>
+            <Button onPress={() => finishRecord()}>Stop Recording</Button>
           </Modal.Body>
         </Modal.Content>
       </Modal>

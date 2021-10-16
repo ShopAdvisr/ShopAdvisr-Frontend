@@ -1,5 +1,13 @@
 import React from 'react';
-import { View, Pressable, Box, IconButton, Image, Center, Text } from 'native-base';
+import {
+  View,
+  Pressable,
+  Box,
+  IconButton,
+  Image,
+  Center,
+  Text,
+} from 'native-base';
 import { useHistory } from 'react-router-native';
 import { PlusIcon } from 'root/components/Icon';
 
@@ -11,13 +19,22 @@ const SearchCard = props => {
   return (
     <>
       <Pressable
-        onPress={() => {history.push(`/product/${productInfo.id}`)}}
-      >
+        onPress={() => {
+          history.push(`/product/${productInfo.id}`);
+        }}>
         {pressableEvents => (
           <Box {...styles.card(pressableEvents)}>
-            <Image source={{uri: "https://wallpaperaccess.com/full/317501.jpg"}} {...styles.cardProfile} />
-            <Center><Text {...styles.cardText}>{productInfo.name}</Text></Center>
-            <Center ml='auto'><PlusIcon /></Center>
+            <Image
+              source={{ uri: 'https://wallpaperaccess.com/full/317501.jpg' }}
+              {...styles.cardProfile}
+            />
+
+            <Center>
+              <Text {...styles.cardText}>{productInfo.name}</Text>
+            </Center>
+            <Center ml="auto">
+              <PlusIcon />
+            </Center>
           </Box>
         )}
       </Pressable>
