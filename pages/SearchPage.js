@@ -3,6 +3,7 @@ import { View, ScrollView } from 'native-base';
 import SearchCard from 'root/components/SearchCard';
 import SearchBar from 'root/components/SearchBar';
 import ProductInfo from 'root/components/ProductInfo';
+import Camera from 'root/components/Camera';
 
 const SearchPage = () => {
   const dummySearchResults = [
@@ -22,6 +23,7 @@ const SearchPage = () => {
   return (
     <>
       <View {...styles.container}>
+        <Camera />
         <SearchBar />
         <ScrollView
           h="92%"
