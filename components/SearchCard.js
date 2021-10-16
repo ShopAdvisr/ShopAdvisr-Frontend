@@ -12,17 +12,12 @@ import {
 import { useHistory } from 'react-router-native';
 import { PlusIcon } from 'root/components/Icon';
 
-const SearchCard = props => {
-  const { productInfo } = props;
-
+const SearchCard = ({ productInfo, setShowProduct }) => {
   const history = useHistory();
 
   return (
     <>
-      <Pressable
-        onPress={() => {
-          history.push(`/product/${productInfo.id}`);
-        }}>
+      <Pressable onPress={() => setShowProduct(true)}>
         {pressableEvents => (
           <Box {...styles.card(pressableEvents)}>
             <Image

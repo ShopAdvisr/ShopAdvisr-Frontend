@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, ScrollView } from 'native-base';
 import SearchCard from 'root/components/SearchCard';
 import SearchBar from 'root/components/SearchBar';
+import ProductInfo from 'root/components/ProductInfo';
 
 const SearchPage = () => {
   const dummySearchResults = [
@@ -16,6 +17,8 @@ const SearchPage = () => {
     { id: 9, name: 'orz' },
   ];
 
+  const [showProduct, setShowProduct] = useState(false);
+
   return (
     <>
       <View {...styles.container}>
@@ -26,9 +29,18 @@ const SearchPage = () => {
           bgColor="teal.100"
           _contentContainerStyle={{ padding: 4 }}>
           {dummySearchResults.map(result => (
-            <SearchCard m={4} productInfo={result} key={result.id} />
+            <SearchCard
+              m={4}
+              productInfo={result}
+              key={result.id}
+              setShowProduct={setShowProduct}
+            />
           ))}
         </ScrollView>
+        <ProductInfo
+          showProduct={showProduct}
+          setShowProduct={setShowProduct}
+        />
       </View>
     </>
   );

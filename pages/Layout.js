@@ -48,7 +48,6 @@ const styles = {
     backgroundColor: 'white',
   },
   headerContainer: {
-    mx: 2,
     mt: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',
