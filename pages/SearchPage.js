@@ -7,7 +7,7 @@ const SearchPage = () => {
 
   return (
     <>
-      <View>
+      <View {...styles.container}>
         <ScrollView>
           {dummySearchResults.map(result => (
             <SearchCard itemName={result} key={result}/>
@@ -16,6 +16,12 @@ const SearchPage = () => {
       </View>
     </>
   );
+};
+
+const styles = {
+  container: {
+    mx: 5
+  }
 };
 
 export default SearchPage;

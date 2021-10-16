@@ -1,29 +1,26 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { View, Box, Text } from 'native-base';
-import theme from 'root/themes';
 
 const SearchCard = props => {
   const { itemName } = props;
 
   return (
     <>
-      <Box style={styles.boxContainer}>
+      <Box {...styles.card}>
         <Text>{itemName}</Text>
       </Box>
     </>
   );
 };
 
-const styles = StyleSheet.create({
-  boxContainer: {
-    backgroundColor: theme.gray['500'],
-    borderRadius: 25,
-    padding: 10,
-    paddingTop: 40,
-    paddingBottom: 40,
-    margin: 3,
+const styles = {
+  card: {
+    borderRadius: 1000,
+    bg: 'muted.100',
+    shadow: 3,
+    p: 5,
+    my: 1
   }
-});
+};
 
 export default SearchCard;

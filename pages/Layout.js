@@ -19,10 +19,13 @@ const Layout = ({ children }) => {
         <Link to="/">
           <Text>Home</Text>
         </Link>
+        <Link to="/search">
+          <Text>Search</Text>
+        </Link>
         <Link to="/cart">
           <Text>Cart List</Text>
         </Link>
-        <Link to="/cart">
+        <Link to="/settings">
           <Text>Settings</Text>
         </Link>
         <Link to="/id/123">
