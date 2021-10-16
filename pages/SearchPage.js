@@ -21,7 +21,13 @@ const SearchPage = () => {
     { id: 13, name: 'orz' },
   ];
 
-  const [showProduct, setShowProduct] = useState(false);
+  const [showProduct, _setShowProduct] = useState(false);
+  const [clickedProductInfo, setClickedProductInfo] = useState({});
+  const enableShowProduct = productInfo => {
+    _setShowProduct(true);
+    setClickedProductInfo(productInfo);
+  }
+  const disableShowProduct = () => _setShowProduct(false);
 
   return (
     <>
@@ -33,13 +39,14 @@ const SearchPage = () => {
               m={4}
               productInfo={result}
               key={result.id}
-              setShowProduct={setShowProduct}
+              enableShowProduct={enableShowProduct}
             />
           ))}
         </ScrollView>
         <ProductInfo
           showProduct={showProduct}
-          setShowProduct={setShowProduct}
+          disableShowProduct={disableShowProduct}
+          productInfo={clickedProductInfo}
         />
       </View>
     </>

@@ -17,54 +17,39 @@ import {
 } from 'native-base';
 import { CloseIcon } from 'root/components/Icon';
 
-const ProductInfo = ({ productInfo, showProduct, setShowProduct }) => {
+const ProductInfo = ({ productInfo, showProduct, disableShowProduct }) => {
   return (
     <>
       <Modal
         isOpen={showProduct}
-        onClose={() => setShowProduct(false)}
+        onClose={disableShowProduct}
         animationPreset="slide">
         <Modal.Content {...styles.modalContainer}>
-          <VStack space={4}>
+          <VStack>
             <View {...styles.topBar}>
               <Center>
                 <IconButton
-                  onPress={() => setShowProduct(false)}
+                  onPress={disableShowProduct}
                   icon={<Icon as={CloseIcon} />}
                   borderRadius="full"
                 />
               </Center>
             </View>
-            <Center bg="muted.100" rounded="md" shadow={3}>
-              <HStack alignItems="center" space={10}>
-                <Center w={'1/3'}>
-                  <Image
-                    source={{
-                      uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    {...styles.productImage}
-                    alt="Item"
-                    size="xl"
-                  />
-                </Center>
-                <Center>
-                  <Text>peepee</Text>
-                </Center>
-              </HStack>
-            </Center>
-            <Center>
-              <Button {...styles.addToCartButton}>Add to Cart</Button>
-              <Box 
-                bg={{
-                  linearGradient: {
-                    colors: ['primary.300', 'violet.800'],
-                    start: [0, 0],
-                    end: [1, 1]
-                  }
+            <View {...styles.productOverviewContainer}>
+              <Image
+                source={{
+                  uri: 'https://wallpaperaccess.com/full/317501.jpg',
                 }}
-              >
-                benis
-              </Box>
+                alt="Item"
+                size="xl"
+                {...styles.productImage}
+              />
+              <View w="auto">
+                <Heading size="lg">{productInfo.name}</Heading>
+              </View>
+            </View>
+            <Center>
+              <Box {...styles.addToCartButton}>Add to Cart</Box>
             </Center>
           </VStack>
         </Modal.Content>
@@ -75,10 +60,8 @@ const ProductInfo = ({ productInfo, showProduct, setShowProduct }) => {
 
 const styles = {
   productImage: {
-    minWidth: '100%',
-    maxHeight: '100%',
-    maxWidth: '100%',
-    borderRadius: 50,
+    borderRadius: 1000,
+    mr: 4
   },
   modalContainer: {
     mt: Dimensions.get('window').height*0.4,
@@ -89,17 +72,27 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
+  productOverviewContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    m: 3
+  },
   addToCartButton: {
     borderRadius: 1000,
     w: "50%",
+    p: 2,
+    _text: {
+      textAlign: 'center',
+      color: 'muted.50'
+    },
     bg: {
       linearGradient: {
         colors: ['primary.300', 'violet.800'],
         start: [0, 0],
         end: [1, 1]
       }
-    }
-  }
+    },
+  },
 };
 
 export default ProductInfo;
