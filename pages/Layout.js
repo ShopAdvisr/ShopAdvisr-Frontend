@@ -1,6 +1,13 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { NativeBaseProvider, View, Text, Heading, Button } from 'native-base';
+import {
+  NativeBaseProvider,
+  View,
+  Text,
+  Heading,
+  Button,
+  Spacer,
+} from 'native-base';
 import {
   NativeRouter,
   Route,
@@ -34,6 +41,7 @@ const Layout = ({ children }) => {
 
         <View bgColor="primary.100" m={4} p={4}>
           <Heading size="2xl">ShopAdvisr</Heading>
+          <Spacer />
           {children}
         </View>
       </View>

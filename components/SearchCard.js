@@ -8,13 +8,21 @@ const SearchCard = props => {
   return (
     <>
       <Pressable
-        onPress={() => {console.log("button pressed")}}
-      >
+        onPress={() => {
+          console.log('button pressed');
+        }}>
         {pressableEvents => (
           <Box {...styles.card(pressableEvents)}>
-            <Image source={{uri: "https://wallpaperaccess.com/full/317501.jpg"}} {...styles.cardProfile} />
-            <Center><Text {...styles.cardText}>{itemName}</Text></Center>
-            <Center ml='auto'><PlusIcon /></Center>
+            <Image
+              source={{ uri: 'https://wallpaperaccess.com/full/317501.jpg' }}
+              {...styles.cardProfile}
+            />
+            <Center>
+              <Text {...styles.cardText}>{itemName}</Text>
+            </Center>
+            <Center ml="auto">
+              <PlusIcon />
+            </Center>
           </Box>
         )}
       </Pressable>
@@ -25,24 +33,24 @@ const SearchCard = props => {
 const styles = {
   card: ({ isPressed }) => {
     return {
-      borderRadius: 1000,
+      borderRadius: 100,
       bg: isPressed ? 'primary.500' : 'muted.100',
       shadow: 3,
       p: 2,
       my: 1,
       flexDirection: 'row',
-      justifyContent: 'flex-start'
-    }
+      justifyContent: 'flex-start',
+    };
   },
   cardText: {
     fontWeight: 'bold',
-    pl: 3
+    pl: 3,
   },
   cardProfile: {
     borderRadius: 1000,
     alt: 'profile',
     size: 'sm',
-  }
+  },
 };
 
 export default SearchCard;
