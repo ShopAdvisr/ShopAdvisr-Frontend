@@ -23,11 +23,7 @@ const SearchPage = () => {
     <>
       <View {...styles.container}>
         <SearchBar />
-        <ScrollView
-          h="92%"
-          p={2}
-          bgColor="teal.100"
-          _contentContainerStyle={{ padding: 4 }}>
+        <ScrollView h="92%" p={2} _contentContainerStyle={{ padding: 4 }}>
           {dummySearchResults.map(result => (
             <SearchCard
               m={4}

@@ -8,9 +8,16 @@ const axiosInstance = axios.create({
 export const textSearch = searchTerm => {};
 
 export const micSearch = async data => {
-  const res = await axiosInstance('suggestions', {
-    data: data,
+  /*
+  const res = await axiosInstance.post('suggestions', {
+    data,
     headers: { 'Content-Type': 'application/octet-stream' },
+  });
+  */
+  const res = await axios.post(API_URL + 'suggestions', data, {
+    headers: {
+      'Content-Type': 'application/octet-stream',
+    },
   });
 
   return res;

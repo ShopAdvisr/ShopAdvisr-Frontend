@@ -24,7 +24,7 @@ export const ShoppingCartIcon = props => {
 
 export const PlusIcon = props => {
   return (
-    <Icon {...props} style={{ textAlign: 'center' }}>
+    <Icon {...props}>
       <Svg
         xmlns="http://www.w3.org/2000/svg"
         fill="black"
@@ -75,6 +75,60 @@ export const CloseIcon = props => {
           strokeLinejoin="round"
           strokeWidth={2}
           d="M6 18L18 6M6 6l12 12"
+        />
+      </Svg>
+    </Icon>
+  );
+};
+
+export const MicrophoneIcon = props => {
+  return (
+    <Icon {...props}>
+      <Svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-5 w-5"
+        viewBox="0 0 20 20"
+        fill="black">
+        <Path
+          fillRule="evenodd"
+          d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"
+          clipRule="evenodd"
+        />
+      </Svg>
+    </Icon>
+  );
+};
+
+export const CameraIcon = props => {
+  return (
+    <Icon {...props}>
+      <Svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-5 w-5"
+        viewBox="0 0 20 20"
+        fill="black">
+        <Path
+          fillRule="evenodd"
+          d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z"
+          clipRule="evenodd"
+        />
+      </Svg>
+    </Icon>
+  );
+};
+
+export const StopRecordIcon = props => {
+  return (
+    <Icon {...props}>
+      <Svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-5 w-5"
+        viewBox="0 0 20 20"
+        fill="black">
+        <Path
+          fillRule="evenodd"
+          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1H8z"
+          clipRule="evenodd"
         />
       </Svg>
     </Icon>
