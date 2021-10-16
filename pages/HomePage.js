@@ -5,7 +5,7 @@ import { NativeRouter, Route, Link } from 'react-router-native';
 const HomePage = () => {
   return (
     <>
-      <Box>Cart Page</Box>
+      <Box>Home Page</Box>
     </>
   );
 };

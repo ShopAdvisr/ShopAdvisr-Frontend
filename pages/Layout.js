@@ -1,16 +1,23 @@
 import React from 'react';
-import { NativeBaseProvider, Box } from 'native-base';
+import { StyleSheet } from 'react-native';
+import { NativeBaseProvider, View, Text } from 'native-base';
 import { NativeRouter, Route, Link } from 'react-router-native';
 
-const CartPage = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <>
-      <Box>
-        Layout Page
+      <View style={styles.container}>
+        <Text>Layout Page</Text>
         {children}
-      </Box>
+      </View>
     </>
   );
 };
 
-export default CartPage;
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white"
+  }
+});
+
+export default Layout;
