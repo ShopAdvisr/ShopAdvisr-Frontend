@@ -10,6 +10,7 @@ import {
   Icon,
   IconButton,
   Modal,
+  Spinner,
 } from 'native-base';
 import RNFetchBlob from 'rn-fetch-blob';
 import { micSearch } from '../services/application.services';
@@ -29,11 +30,13 @@ import { PermissionsAndroid } from 'react-native';
 
 const audioRecorderPlayer = new AudioRecorderPlayer();
 audioRecorderPlayer.setSubscriptionDuration(0.09);
+import Camera from 'root/components/Camera';
 
 const SearchBar = props => {
   const { itemName } = props;
   const [showModal, setShowModal] = useState(false);
   const [searchText, setSearchText] = useState('');
+  const [loading, setLoading] = useState(false);
   const onStartRecord = async () => {
     try {
       const grants = await PermissionsAndroid.requestMultiple([
@@ -101,6 +104,7 @@ const SearchBar = props => {
 
   const finishRecord = async () => {
     console.log('stop recording');
+    setLoading(true);
     await onStopRecord();
     const dirs = RNFetchBlob.fs.dirs;
     const path = `${dirs.CacheDir}/file.m4a`;
@@ -115,6 +119,7 @@ const SearchBar = props => {
     // RNFetchBlob.fetch('GET', 'https://shopadvisr.herokuapp.com')
 
     setShowModal(false);
+    setLoading(false);
   };
 
   return (
@@ -143,9 +148,13 @@ const SearchBar = props => {
           <Modal.Header>Speak your thoughts</Modal.Header>
           <Modal.Body>
             <Center>
-              <IconButton onPress={() => finishRecord()} borderRadius="full">
-                <Icon as={StopRecordIcon} style={{ textAlign: 'center' }} />
-              </IconButton>
+              {loading ? (
+                <Spinner />
+              ) : (
+                <IconButton onPress={() => finishRecord()} borderRadius="full">
+                  <Icon as={StopRecordIcon} style={{ textAlign: 'center' }} />
+                </IconButton>
+              )}
             </Center>
           </Modal.Body>
         </Modal.Content>
