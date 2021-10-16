@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import {
   NativeBaseProvider,
   View,
@@ -7,7 +6,9 @@ import {
   Heading,
   Button,
   Spacer,
-  Pressable,
+  Icon,
+  IconButton,
+  Center,
 } from 'native-base';
 import {
   NativeRouter,
@@ -22,15 +23,19 @@ const Layout = ({ children }) => {
   const history = useHistory();
   return (
     <>
-      <View style={styles.container} w="100%" h="100%">
-        <BackButton />
-        <Pressable onPress={() => history.goBack()}>
-          <BackIcon m={1} />
-        </Pressable>
+      <View {...styles.container} w="100%" h="100%">
+        <BackButton/>
+        <View {...styles.headerContainer}>
+          <Center>
+            <IconButton
+              onPress={() => history.goBack()}
+              icon={<Icon as={BackIcon}/>}
+              borderRadius="full"
+            />
+          </Center>
+        </View>
 
         <View m={4} p={4}>
-          <Heading size="2xl">ShopAdvisr</Heading>
-          <Spacer />
           {children}
         </View>
       </View>
@@ -38,10 +43,16 @@ const Layout = ({ children }) => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
     backgroundColor: 'white',
   },
-});
+  headerContainer: {
+    mx: 2,
+    mt: 4,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  }
+};
 
 export default Layout;
