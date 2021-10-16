@@ -31,7 +31,7 @@ const ItemPage = ({ id }) => {
                 />
               </Center>
               <Center>
-                <Text>Hello</Text>
+                <Text>peepee</Text>
               </Center>
             </HStack>
           </Center>
