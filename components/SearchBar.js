@@ -31,12 +31,15 @@ import { PermissionsAndroid } from 'react-native';
 const audioRecorderPlayer = new AudioRecorderPlayer();
 audioRecorderPlayer.setSubscriptionDuration(0.09);
 import Camera from 'root/components/Camera';
+import Graph from 'root/components/Line-chart';
 
 const SearchBar = props => {
   const { itemName } = props;
   const [showModal, setShowModal] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [loading, setLoading] = useState(false);
+  let tempCurrentMetering = [];
+  const [currentMetering, setCurrentMetering] = useState([]);
   const onStartRecord = async () => {
     try {
       const grants = await PermissionsAndroid.requestMultiple([
@@ -79,7 +82,12 @@ const SearchBar = props => {
       const uri = await audioRecorderPlayer.startRecorder(path, audioSet, true);
       audioRecorderPlayer.addRecordBackListener(e => {
         // console.log('Recording', e.currentPosition);
-        console.log('Metering', e.currentMetering);
+        setCurrentMetering(prevMetering => [
+          ...prevMetering,
+          e.currentMetering,
+        ]);
+        // tempCurrentMetering.push(e.currentMetering * -1);
+        // console.log(tempCurrentMetering);
       });
       console.log(`uri: ${uri}`);
     } catch (err) {
@@ -118,6 +126,8 @@ const SearchBar = props => {
     setSearchText(text);
     // RNFetchBlob.fetch('GET', 'https://shopadvisr.herokuapp.com')
 
+    setCurrentMetering([]);
+    tempCurrentMetering = [];
     setShowModal(false);
     setLoading(false);
   };
@@ -147,6 +157,7 @@ const SearchBar = props => {
         <Modal.Content>
           <Modal.Header>Speak your thoughts</Modal.Header>
           <Modal.Body>
+            <Graph data={currentMetering} />
             <Center>
               {loading ? (
                 <Spinner />

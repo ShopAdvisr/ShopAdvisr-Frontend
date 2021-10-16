@@ -6,12 +6,15 @@ import HomePage from 'root/pages/HomePage';
 import SearchPage from 'root/pages/SearchPage';
 import CartPage from 'root/pages/CartPage';
 import SettingsPage from 'root/pages/SettingsPage';
+import { LogBox } from 'react-native';
 
 const nativeBaseConfig = {
   dependencies: {
-    'linear-gradient': require('react-native-linear-gradient').default
-  }
+    'linear-gradient': require('react-native-linear-gradient').default,
+  },
 };
+
+LogBox.ignoreLogs(['Warning: ...']);
 
 export default function App() {
   return (

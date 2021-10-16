@@ -35,9 +35,7 @@ const Layout = ({ children }) => {
           </Center>
         </View>
 
-        <View {...styles.viewContainer}>
-          {children}
-        </View>
+        <View {...styles.viewContainer}>{children}</View>
       </View>
     </>
   );
@@ -54,7 +52,7 @@ const styles = {
   },
   viewContainer: {
     p: 4,
-  }
+  },
 };
 
 export default Layout;

@@ -3,6 +3,7 @@ import { View, ScrollView } from 'native-base';
 import SearchCard from 'root/components/SearchCard';
 import SearchBar from 'root/components/SearchBar';
 import ProductInfo from 'root/components/ProductInfo';
+import Graph from 'root/components/Line-chart';
 
 const SearchPage = () => {
   const dummySearchResults = [
@@ -56,9 +57,9 @@ const SearchPage = () => {
 const styles = {
   container: {},
   scrollContainer: {
-    h: "92%",
+    h: '92%',
     p: 2,
-    bgColor: "teal.100",
+    bgColor: 'teal.100',
     m: 0,
     px: 4,
   },
