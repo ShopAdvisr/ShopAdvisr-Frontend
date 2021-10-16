@@ -1,15 +1,20 @@
 import React from 'react';
-import { View, Pressable, Box, Text } from 'native-base';
+import { View, Pressable, Box, Image, Center, Text } from 'native-base';
+import { PlusIcon } from 'root/components/Icon';
 
 const SearchCard = props => {
   const { itemName } = props;
 
   return (
     <>
-      <Pressable>
+      <Pressable
+        onPress={() => {console.log("button pressed")}}
+      >
         {pressableEvents => (
           <Box {...styles.card(pressableEvents)}>
-            <Text>{itemName}</Text>
+            <Image source={{uri: "https://wallpaperaccess.com/full/317501.jpg"}} {...styles.cardProfile} />
+            <Center><Text {...styles.cardText}>{itemName}</Text></Center>
+            <Center ml='auto'><PlusIcon /></Center>
           </Box>
         )}
       </Pressable>
@@ -23,9 +28,20 @@ const styles = {
       borderRadius: 1000,
       bg: isPressed ? 'primary.500' : 'muted.100',
       shadow: 3,
-      p: 5,
-      my: 5
+      p: 2,
+      my: 1,
+      flexDirection: 'row',
+      justifyContent: 'flex-start'
     }
+  },
+  cardText: {
+    fontWeight: 'bold',
+    pl: 3
+  },
+  cardProfile: {
+    borderRadius: 1000,
+    alt: 'profile',
+    size: 'sm',
   }
 };
 
