@@ -18,10 +18,13 @@ export default function App() {
             <Link to="/">
               <Text>Home</Text>
             </Link>
+            <Link to="/search">
+              <Text>Search</Text>
+            </Link>
             <Link to="/cart">
               <Text>Cart List</Text>
             </Link>
-            <Link to="/cart">
+            <Link to="/settings">
               <Text>Settings</Text>
             </Link>
             <Link to="/id/123">
@@ -29,7 +32,7 @@ export default function App() {
             </Link>
           </Box>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/home" component={SearchPage} />
+          <Route exact path="/search" component={SearchPage} />
           <Route exact path="/cart" component={CartPage} />
           <Route exact path="/settings" component={SettingsPage} />
           <Route exact path="/id/:id" component={ItemPage} />

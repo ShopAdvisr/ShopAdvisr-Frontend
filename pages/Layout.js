@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { NativeBaseProvider, View, Text } from 'native-base';
+import { View, Text } from 'native-base';
 import { NativeRouter, Route, Link } from 'react-router-native';
 
 const Layout = ({ children }) => {
