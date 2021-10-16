@@ -20,9 +20,9 @@ const SearchPage = () => {
     <>
       <View {...styles.container}>
         <SearchBar />
-        <ScrollView h="4/5">
+        <ScrollView h="4/5" p={2} _contentContainerStyle={{ padding: 4 }}>
           {dummySearchResults.map(result => (
-            <SearchCard productInfo={result} key={result.id} />
+            <SearchCard m={4} productInfo={result} key={result.id} />
           ))}
         </ScrollView>
       </View>
@@ -31,7 +31,7 @@ const SearchPage = () => {
 };
 
 const styles = {
-  container: {}
+  container: {},
 };
 
 export default SearchPage;

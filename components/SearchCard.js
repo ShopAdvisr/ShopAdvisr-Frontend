@@ -35,7 +35,7 @@ const SearchCard = props => {
             </Center>
             <Center ml="auto">
               <IconButton
-                icon={<Icon as={PlusIcon} />}
+                icon={<Icon as={PlusIcon} style={{ textAlign: 'center' }} />}
                 borderRadius="full"
               />
             </Center>
@@ -51,7 +51,7 @@ const styles = {
     return {
       borderRadius: 100,
       bg: isPressed ? 'primary.500' : 'muted.100',
-      shadow: 3,
+      shadow: 9,
       p: 2,
       my: 1,
       flexDirection: 'row',
