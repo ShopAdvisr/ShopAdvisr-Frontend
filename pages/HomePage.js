@@ -29,12 +29,12 @@ const HomePage = () => {
           <Pressable
             onPress={() => history.push('/search')}
             {...styles.startButtonContainer}>
-            <Box {...styles.startButton}>Register</Box>
+            <Box {...styles.registerButton}>Register</Box>
           </Pressable>
           <Pressable
             onPress={() => history.push('/search')}
             {...styles.startButtonContainer}>
-            <Box {...styles.startButton}>Log In</Box>
+            <Box {...styles.loginButton}>Log In</Box>
           </Pressable>
           <Text {...styles.forgotText}>forgot your password?</Text>
         </Center>
@@ -51,7 +51,7 @@ const styles = {
     width: '75%',
     m: 1,
   },
-  startButton: {
+  registerButton: {
     borderRadius: 1000,
     shadow: 3,
     py: 4,
@@ -67,6 +67,19 @@ const styles = {
         end: [1, 1],
       },
     },
+  },
+  loginButton: {
+    borderRadius: 1000,
+    shadow: 3,
+    py: 4,
+    _text: {
+      textAlign: 'center',
+      fontWeight: 'semibold',
+      color: 'shopadvisr.blue',
+    },
+    bg: 'white',
+    borderWidth: 1,
+    borderColor: 'shopadvisr.blue'
   },
   forgotText: {
     color: 'shopadvisr.blue',
