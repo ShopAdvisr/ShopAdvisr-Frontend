@@ -3,21 +3,21 @@ import {
   View,
   Pressable,
   Box,
-  Icon,
-  IconButton,
   Image,
   Center,
   Text,
 } from 'native-base';
-import { PlusIcon } from 'root/components/Icon';
-import { useCtx } from 'root/utils/context';
 
-const SearchCard = ({ productInfo, enableShowProduct }) => {
-  const { addToShoppingCart } = useCtx();
+const SearchCard = props => {
+  const {
+    productInfo,
+    children,
+    pressAction,
+  } = props;
 
   return (
     <>
-      <Pressable onPress={() => enableShowProduct(productInfo)}>
+      <Pressable onPress={pressAction}>
         {pressableEvents => (
           <Box {...styles.card(pressableEvents)}>
             <Image
@@ -29,11 +29,7 @@ const SearchCard = ({ productInfo, enableShowProduct }) => {
               <Text {...styles.cardText}>{productInfo.name}</Text>
             </Center>
             <Center ml="auto">
-              <IconButton
-                icon={<Icon as={PlusIcon} style={{ textAlign: 'center' }} />}
-                borderRadius="full"
-                onPress={() => addToShoppingCart(productInfo)}
-              />
+              {children}
             </Center>
           </Box>
         )}

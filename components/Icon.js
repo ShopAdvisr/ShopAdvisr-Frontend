@@ -25,17 +25,8 @@ export const ShoppingCartIcon = props => {
 export const PlusIcon = props => {
   return (
     <Icon {...props}>
-      <Svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="black"
-        viewBox="0 0 24 24"
-        stroke="black">
-        <Path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 4v16m8-8H4"
-        />
+      <Svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="black">
+        <Path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
       </Svg>
     </Icon>
   );
@@ -76,6 +67,16 @@ export const CloseIcon = props => {
           strokeWidth={2}
           d="M6 18L18 6M6 6l12 12"
         />
+      </Svg>
+    </Icon>
+  );
+};
+
+export const DeleteIcon = props => {
+  return (
+    <Icon {...props}>
+      <Svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#e11d48">
+        <Path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </Svg>
     </Icon>
   );
