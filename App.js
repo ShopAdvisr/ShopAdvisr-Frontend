@@ -1,5 +1,5 @@
 import React from 'react';
-import { NativeBaseProvider, Box, Text, View } from 'native-base';
+import { NativeBaseProvider, extendTheme, Box, Text, View } from 'native-base';
 import { NativeRouter, Route } from 'react-router-native';
 import Layout from 'root/pages/Layout';
 import HomePage from 'root/pages/HomePage';
@@ -15,13 +15,23 @@ const nativeBaseConfig = {
   },
 };
 
+const themeConfig = extendTheme({
+  colors: {
+    shopadvisr: {
+      blue: '#1aa7ff',
+      darkblue: '#0087dc',
+      lightblue: '#62c2ff'
+    }
+  }
+});
+
 console.disableYellowBox = true;
 LogBox.ignoreLogs(['Warning: ...']);
 
 export default function App() {
   return (
     <NativeRouter>
-      <NativeBaseProvider config={nativeBaseConfig}>
+      <NativeBaseProvider config={nativeBaseConfig} theme={themeConfig}>
         <Layout>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/search" component={SearchPage} />

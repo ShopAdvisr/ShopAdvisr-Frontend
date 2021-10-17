@@ -19,7 +19,7 @@ import {
   useHistory,
   withRouter,
 } from 'react-router-native';
-import { BackIcon, ShoppingCartIcon } from 'root/components/Icon';
+import { BackIcon, ShoppingCartIcon, SettingsIcon } from 'root/components/Icon';
 import CtxProvider from 'root/utils/context';
 
 const Layout = ({ children, location }) => {
@@ -32,7 +32,7 @@ const Layout = ({ children, location }) => {
         <View>
           <BackButton />
           <View {...styles.headerContainer}>
-            <Center>
+            <Center mr="auto">
               <IconButton
                 onPress={() => history.goBack()}
                 icon={<Icon as={BackIcon} />}
@@ -46,6 +46,12 @@ const Layout = ({ children, location }) => {
                 borderRadius="full"
               />
             </Center>)}
+            <Center>
+              <IconButton
+                icon={<Icon as={SettingsIcon} />}
+                borderRadius="full"
+              />
+            </Center>
           </View>
         </View>
       </View>)}
@@ -59,7 +65,13 @@ const Layout = ({ children, location }) => {
 
 const styles = {
   vanityBar: {
-    backgroundColor: 'primary.500',
+    bg: {
+      linearGradient: {
+        colors: ['shopadvisr.lightblue', 'shopadvisr.darkblue'],
+        start: [0, 0],
+        end: [1, 1]
+      }
+    },
     h: 5,
     shadow: 9
   },
@@ -74,7 +86,7 @@ const styles = {
     mt: 2,
     mx: 2,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
   },
   viewContainer: {
     p: 0,

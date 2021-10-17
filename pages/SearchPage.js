@@ -66,7 +66,10 @@ const SearchPage = () => {
           showProduct={showProduct}
           disableShowProduct={disableShowProduct}
           productInfo={clickedProductInfo}>
-          <Pressable onPress={() => addToShoppingCart(clickedProductInfo)}>
+          <Pressable onPress={() => {
+            addToShoppingCart(clickedProductInfo);
+            disableShowProduct();
+          }}>
             {pressableEvents => (
               <Box {...styles.addToCartButton}>Add to Cart</Box>
             )}

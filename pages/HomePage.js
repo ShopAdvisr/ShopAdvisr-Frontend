@@ -2,6 +2,7 @@ import React from 'react';
 import { NativeBaseProvider, View, Box, Pressable, Heading, Center, Text } from 'native-base';
 import { NativeRouter, Route, Link, useHistory } from 'react-router-native';
 import Wave from 'react-native-waveview';
+import { MainIcon } from 'root/components/Icon';
 
 const HomePage = () => {
   const history = useHistory();
@@ -13,6 +14,7 @@ const HomePage = () => {
           <Wave {...styles.wave}/>
         </View>
         <Center mt="60%">
+          <MainIcon/>
           <Heading {...styles.title}>ShopAdvisr.</Heading>
         </Center>
         <Center mt="auto" mb="10%">
@@ -48,14 +50,14 @@ const styles = {
     },
     bg: {
       linearGradient: {
-        colors: ['#62c2ff', '#0087dc'],
+        colors: ['shopadvisr.blue', 'shopadvisr.darkblue'],
         start: [0, 0],
         end: [1, 1]
       }
     },
   },
   forgotText: {
-    color: '#1aa7ff',
+    color: 'shopadvisr.blue',
     fontSize: 12,
   },
   waveContainer: {

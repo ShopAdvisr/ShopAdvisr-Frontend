@@ -25,7 +25,7 @@ const SearchCard = props => {
               {...styles.cardProfile}
             />
 
-            <Center>
+            <Center maxWidth="50%">
               <Text {...styles.cardText}>{productInfo.Product}</Text>
             </Center>
             <Center ml="auto">
@@ -42,16 +42,21 @@ const styles = {
   card: ({ isPressed }) => {
     return {
       borderRadius: 100,
-      bg: isPressed ? 'primary.500' : 'muted.100',
+      bg: isPressed ? { linearGradient: {
+        colors: ['shopadvisr.lightblue', 'shopadvisr.darkblue'],
+        start: [0, 0],
+        end: [1, 1]
+      }} : 'muted.100',
       shadow: 5,
       p: 2,
       my: 1,
       flexDirection: 'row',
       justifyContent: 'flex-start',
-    };
+    }
   },
   cardText: {
     pl: 3,
+    noOfLines: 1
   },
   cardProfile: {
     borderRadius: 1000,
