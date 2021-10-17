@@ -12,6 +12,7 @@ const SearchCard = props => {
             <Image
               source={{ uri: productInfo['Image URL'] }}
               {...styles.cardProfile}
+              key={productInfo['Image URL']}
             />
 
             <Center maxWidth="70%">
