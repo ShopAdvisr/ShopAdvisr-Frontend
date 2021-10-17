@@ -21,18 +21,16 @@ LogBox.ignoreLogs(['Warning: ...']);
 
 export default function App() {
   return (
-    <NativeBaseProvider config={nativeBaseConfig}>
-      <View>
-        <NativeRouter>
-          <Layout>
-            <Route exact path="/" component={SearchPage} />
-            <Route exact path="/search" component={SearchPage} />
-            <Route exact path="/cart" component={CartPage} />
-            <Route exact path="/settings" component={SettingsPage} />
-            <Route exact path="/camera" component={CameraPage} />
-          </Layout>
-        </NativeRouter>
-      </View>
-    </NativeBaseProvider>
+    <NativeRouter>
+      <NativeBaseProvider config={nativeBaseConfig}>
+        <Layout>
+          <Route exact path="/" component={SearchPage} />
+          <Route exact path="/search" component={SearchPage} />
+          <Route exact path="/cart" component={CartPage} />
+          <Route exact path="/settings" component={SettingsPage} />
+          <Route exact path="/camera" component={CameraPage} />
+        </Layout>
+      </NativeBaseProvider>
+    </NativeRouter>
   );
 }

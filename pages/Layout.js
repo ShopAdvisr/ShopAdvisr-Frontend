@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <View {...styles.container} w="100%" h="100%">
+      <View {...styles.container}>
         <BackButton />
         <View {...styles.headerContainer}>
           <Center>
@@ -36,10 +36,10 @@ const Layout = ({ children }) => {
             />
           </Center>
         </View>
-        
+
         <CtxProvider>
           <View {...styles.viewContainer}>{children}</View>
-         </CtxProvider>
+        </CtxProvider>
       </View>
     </>
   );

@@ -13,9 +13,7 @@ import { PlusIcon } from 'root/components/Icon';
 import { useCtx } from 'root/utils/context';
 
 const SearchCard = ({ productInfo, enableShowProduct }) => {
-  const {
-    addToShoppingCart 
-  } = useCtx();
+  const { addToShoppingCart } = useCtx();
 
   return (
     <>
