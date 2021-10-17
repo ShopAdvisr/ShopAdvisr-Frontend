@@ -8,13 +8,10 @@ const CtxProvider = ({ children }) => {
 
   const [shoppingCart, _setShoppingCart] = useState([]);
   const addToShoppingCart = useCallback(newItem => {
-    _setShoppingCart(prevShoppingCart => {
-      console.debug('prevShoppingCart', prevShoppingCart);
-      return [
-        ...prevShoppingCart,
-        newItem
-      ];
-    });
+    _setShoppingCart(prevShoppingCart => [
+      ...prevShoppingCart,
+      newItem
+    ]);
   }, [shoppingCart, _setShoppingCart]);
   const removeFromShoppingCart = useCallback(itemId => {
     _setShoppingCart(prevShoppingCart => {

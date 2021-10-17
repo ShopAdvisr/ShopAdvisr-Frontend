@@ -47,7 +47,7 @@ const styles = {
     return {
       borderRadius: 100,
       bg: isPressed ? 'primary.500' : 'muted.100',
-      shadow: 9,
+      shadow: 5,
       p: 2,
       my: 1,
       flexDirection: 'row',
