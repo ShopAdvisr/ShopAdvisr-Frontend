@@ -17,40 +17,43 @@ import {
   Link,
   BackButton,
   useHistory,
+  withRouter,
 } from 'react-router-native';
 import { BackIcon, ShoppingCartIcon } from 'root/components/Icon';
 import CtxProvider from 'root/utils/context';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
   const history = useHistory();
 
   return (
-    <>
-      <Box {...styles.vanityBar}></Box>
-      <View {...styles.container}>
-        <BackButton />
-        <View {...styles.headerContainer}>
-          <Center>
-            <IconButton
-              onPress={() => history.goBack()}
-              icon={<Icon as={BackIcon} />}
-              borderRadius="full"
-            />
-          </Center>
-          <Center>
-            <IconButton
-              onPress={() => history.push('/cart')}
-              icon={<Icon as={ShoppingCartIcon} />}
-              borderRadius="full"
-            />
-          </Center>
+    <View {...styles.container}>
+      {location?.pathname != "/" && (<View>
+        <Box {...styles.vanityBar}></Box>
+        <View>
+          <BackButton />
+          <View {...styles.headerContainer}>
+            <Center>
+              <IconButton
+                onPress={() => history.goBack()}
+                icon={<Icon as={BackIcon} />}
+                borderRadius="full"
+              />
+            </Center>
+            {location?.pathname != "/cart" && (<Center>
+              <IconButton
+                onPress={() => history.push('/cart')}
+                icon={<Icon as={ShoppingCartIcon} />}
+                borderRadius="full"
+              />
+            </Center>)}
+          </View>
         </View>
+      </View>)}
 
-        <CtxProvider>
-          <View {...styles.viewContainer}>{children}</View>
-        </CtxProvider>
-      </View>
-    </>
+      <CtxProvider>
+        <View {...styles.viewContainer}>{children}</View>
+      </CtxProvider>
+    </View>
   );
 };
 
@@ -62,6 +65,10 @@ const styles = {
   },
   container: {
     backgroundColor: 'white',
+    m: 0,
+    p: 0,
+    w: "100%",
+    h: "100%"
   },
   headerContainer: {
     mt: 2,
@@ -70,8 +77,8 @@ const styles = {
     justifyContent: 'space-between',
   },
   viewContainer: {
-    p: 4,
+    p: 0,
   },
 };
 
-export default Layout;
+export default withRouter(Layout);

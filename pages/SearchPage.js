@@ -72,7 +72,9 @@ const SearchPage = () => {
 };
 
 const styles = {
-  container: {},
+  container: {
+    p: 4
+  },
   scrollContainer: {
     h: '85%',
     m: 0,
