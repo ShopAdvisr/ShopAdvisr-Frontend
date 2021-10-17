@@ -7,6 +7,7 @@ import Graph from 'root/components/Line-chart';
 import { useCtx } from 'root/utils/context';
 
 const SearchPage = () => {
+  const { shoppingCart, searchResults } = useCtx();
   const dummySearchResults = [
     { id: 1, name: 'apple' },
     { id: 2, name: 'bread' },
@@ -23,8 +24,6 @@ const SearchPage = () => {
     { id: 13, name: 'orz' },
   ];
 
-  const { shoppingCart } = useCtx();
-
   const [showProduct, _setShowProduct] = useState(false);
   const [clickedProductInfo, setClickedProductInfo] = useState({});
   const enableShowProduct = productInfo => {
@@ -40,7 +39,7 @@ const SearchPage = () => {
         <Heading size="xl">Search</Heading>
         <SearchBar />
         <ScrollView {...styles.scrollContainer}>
-          {dummySearchResults.map(result => (
+          {searchResults.map(result => (
             <SearchCard
               m={4}
               productInfo={result}
@@ -62,7 +61,7 @@ const SearchPage = () => {
 const styles = {
   container: {},
   scrollContainer: {
-    h: '87%',
+    h: '85%',
     m: 0,
     _contentContainerStyle: {
       padding: 2,

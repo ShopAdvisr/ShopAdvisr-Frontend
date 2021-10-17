@@ -5,16 +5,34 @@ const axiosInstance = axios.create({
   baseURL: API_URL,
 });
 
-export const textSearch = searchTerm => {};
-
 export const micSearch = async data => {
+  const res = await axios.post(API_URL + 'suggestions', data, {
+    headers: {
+      'Content-Type': 'application/octet-stream',
+    },
+  });
+
+  return res.data;
+};
+
+export const textSearch = async data => {
   /*
-  const res = await axiosInstance.post('suggestions', {
-    data,
-    headers: { 'Content-Type': 'application/octet-stream' },
+  const res = await axios.post(API_URL + 'search', data, {
+    headers: {
+      'Content-Type': 'application/html',
+    },
   });
   */
-  const res = await axios.post(API_URL + 'suggestions', data, {
+
+  const res = await axios.post('https://shopadvisr.herokuapp.com/search', {
+    text: data,
+  });
+
+  return res.data;
+};
+
+export const imageSearch = async data => {
+  const res = await axios.post(API_URL + 'ocr', data, {
     headers: {
       'Content-Type': 'application/octet-stream',
     },

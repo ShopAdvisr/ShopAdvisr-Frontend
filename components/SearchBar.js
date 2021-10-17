@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-native';
+import { useCtx } from 'root/utils/context';
 import {
   View,
   Box,
@@ -14,7 +15,7 @@ import {
   Spinner,
 } from 'native-base';
 import RNFetchBlob from 'rn-fetch-blob';
-import { micSearch } from '../utils/requests';
+import { micSearch, textSearch, imageSearch } from '../utils/requests';
 import {
   MicrophoneIcon,
   CameraIcon,
@@ -35,14 +36,15 @@ const audioRecorderPlayer = new AudioRecorderPlayer();
 audioRecorderPlayer.setSubscriptionDuration(0.09);
 
 const SearchBar = props => {
-  const { itemName } = props;
   const history = useHistory();
+  const { setSearchResults } = useCtx();
 
   const [showModal, setShowModal] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [loading, setLoading] = useState(false);
-  let tempCurrentMetering = [];
   const [currentMetering, setCurrentMetering] = useState([]);
+  const [currentText, setCurrentText] = useState('');
+
   const onStartRecord = async () => {
     try {
       const grants = await PermissionsAndroid.requestMultiple([
@@ -84,13 +86,10 @@ const SearchBar = props => {
       console.log('audioSet', audioSet);
       const uri = await audioRecorderPlayer.startRecorder(path, audioSet, true);
       audioRecorderPlayer.addRecordBackListener(e => {
-        // console.log('Recording', e.currentPosition);
         setCurrentMetering(prevMetering => [
           ...prevMetering,
           e.currentMetering,
         ]);
-        // tempCurrentMetering.push(e.currentMetering * -1);
-        // console.log(tempCurrentMetering);
       });
       console.log(`uri: ${uri}`);
     } catch (err) {
@@ -100,7 +99,7 @@ const SearchBar = props => {
   };
 
   const onStopRecord = async () => {
-    const result = await audioRecorderPlayer.stopRecorder();
+    await audioRecorderPlayer.stopRecorder();
     audioRecorderPlayer.removeRecordBackListener();
   };
 
@@ -113,6 +112,11 @@ const SearchBar = props => {
     setShowModal(true);
   };
 
+  const onChangeText = async value => {
+    console.log('text changed');
+    setSearchText(value);
+  };
+
   const finishRecord = async () => {
     console.log('stop recording');
     setLoading(true);
@@ -120,17 +124,15 @@ const SearchBar = props => {
     const dirs = RNFetchBlob.fs.dirs;
     const path = `${dirs.CacheDir}/file.m4a`;
     const data = await RNFetchBlob.fs.readFile(path, 'base64');
-    let text = '';
+    let res = {};
     try {
-      text = await micSearch(data);
+      res = await micSearch(data);
+      setSearchResults(res.items);
+      setSearchText(res.text);
     } catch (err) {
       console.log(err);
     }
-    setSearchText(text);
-    // RNFetchBlob.fetch('GET', 'https://shopadvisr.herokuapp.com')
-
     setCurrentMetering([]);
-    tempCurrentMetering = [];
     setShowModal(false);
     setLoading(false);
   };
@@ -143,6 +145,8 @@ const SearchBar = props => {
           placeholder="Ask me anything"
           variant="filled"
           size="md"
+          value={searchText}
+          onChangeText={onChangeText}
           InputRightElement={
             <Flex align="center" justify="center" flexDirection="row">
               <IconButton onPress={() => clickRecord()} borderRadius="full">

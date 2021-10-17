@@ -21,12 +21,12 @@ const SearchCard = ({ productInfo, enableShowProduct }) => {
         {pressableEvents => (
           <Box {...styles.card(pressableEvents)}>
             <Image
-              source={{ uri: 'https://wallpaperaccess.com/full/317501.jpg' }}
+              source={{ uri: productInfo['Image URL'] }}
               {...styles.cardProfile}
             />
 
             <Center>
-              <Text {...styles.cardText}>{productInfo.name}</Text>
+              <Text {...styles.cardText}>{productInfo.Product}</Text>
             </Center>
             <Center ml="auto">
               <IconButton

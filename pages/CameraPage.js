@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import { IconButton, Icon, Center, View } from 'native-base';
 import { RNCamera } from 'react-native-camera';
 import { LightCameraIcon } from 'root/components/Icon';
+import { useCtx } from 'root/utils/context';
+import RNFetchBlob from 'rn-fetch-blob';
+import { imageSearch } from '../utils/requests';
+import { useHistory } from 'react-router-native';
 
 const CameraPage = () => {
+  const history = useHistory();
+  const { setSearchResults } = useCtx();
   const takePicture = async cameraRef => {
     if (cameraRef == null) {
       return;
@@ -15,6 +21,15 @@ const CameraPage = () => {
         base64: true,
       });
       console.debug('data uri', data.uri);
+      const encoded = await RNFetchBlob.fs.readFile(data.uri, 'base64');
+      let res = {};
+      try {
+        res = await imageSearch(encoded);
+        setSearchResults(res.items);
+        history.push('/search');
+      } catch (e) {
+        console.log(e);
+      }
     } catch (e) {
       console.debug('failed to take picture', e);
     }
