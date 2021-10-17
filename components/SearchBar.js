@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-native';
 import { useCtx } from 'root/utils/context';
 import {
@@ -28,7 +28,7 @@ import AudioRecorderPlayer, {
   AudioSet,
   AudioSourceAndroidType,
 } from 'react-native-audio-recorder-player';
-import { PermissionsAndroid } from 'react-native';
+import { PermissionsAndroid, Keyboard } from 'react-native';
 
 import Graph from 'root/components/Line-chart';
 
@@ -44,6 +44,21 @@ const SearchBar = props => {
   const [loading, setLoading] = useState(false);
   const [currentMetering, setCurrentMetering] = useState([]);
   const [currentText, setCurrentText] = useState('');
+
+  useEffect(() => {
+    const hideSubscription = Keyboard.addListener(
+      'keyboardDidHide',
+      async () => {
+        const res = await textSearch(searchText);
+        setSearchResults([]);
+        setSearchResults(res.items);
+      },
+    );
+
+    return () => {
+      hideSubscription.remove();
+    };
+  });
 
   const onStartRecord = async () => {
     try {
