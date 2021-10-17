@@ -38,5 +38,5 @@ export const imageSearch = async data => {
     },
   });
 
-  return res;
+  return res.data;
 };

@@ -25,7 +25,10 @@ const CameraPage = () => {
       let res = {};
       try {
         res = await imageSearch(encoded);
+        console.log(res);
+        setSearchResults([]);
         setSearchResults(res.items);
+        console.log(res.items);
         history.push('/search');
       } catch (e) {
         console.log(e);
