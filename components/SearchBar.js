@@ -149,16 +149,18 @@ const SearchBar = props => {
           onChangeText={onChangeText}
           InputRightElement={
             <Flex align="center" justify="center" flexDirection="row">
-              <IconButton onPress={() => clickRecord()} borderRadius="full">
-                <Icon as={MicrophoneIcon} style={{ textAlign: 'center' }} />
-              </IconButton>
               <IconButton
                 onPress={() => {
                   console.log('clicked camera');
                   history.push('/camera');
                 }}
-                borderRadius="full">
+                borderRadius="full"
+                mr={-2}
+              >
                 <Icon as={CameraIcon} style={{ textAlign: 'center' }} />
+              </IconButton>
+              <IconButton onPress={() => clickRecord()} borderRadius="full"  transform={[{ scale: 0.8 }]}>
+                <Icon as={MicrophoneIcon} style={{ textAlign: 'center' }} />
               </IconButton>
             </Flex>
           }
