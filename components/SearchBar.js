@@ -29,7 +29,6 @@ import AudioRecorderPlayer, {
 } from 'react-native-audio-recorder-player';
 import { PermissionsAndroid } from 'react-native';
 
-import Camera from 'root/components/Camera';
 import Graph from 'root/components/Line-chart';
 
 const audioRecorderPlayer = new AudioRecorderPlayer();

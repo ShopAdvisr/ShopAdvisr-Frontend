@@ -1,4 +1,4 @@
-package com.awesomenativebase;
+package com.shopadvisr;
 
 import com.facebook.react.ReactActivity;
 

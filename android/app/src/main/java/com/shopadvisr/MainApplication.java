@@ -1,4 +1,4 @@
-package com.awesomenativebase;
+package com.shopadvisr;
 
 import android.app.Application;
 import android.content.Context;

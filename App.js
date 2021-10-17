@@ -15,6 +15,8 @@ const nativeBaseConfig = {
   },
 };
 
+console.disableYellowBox = true;
+
 LogBox.ignoreLogs(['Warning: ...']);
 
 export default function App() {
