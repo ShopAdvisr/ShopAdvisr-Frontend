@@ -13,7 +13,7 @@ import SearchCard from 'root/components/SearchCard';
 import SearchBar from 'root/components/SearchBar';
 import ProductInfo from 'root/components/ProductInfo';
 import Graph from 'root/components/Line-chart';
-import { PlusIcon } from 'root/components/Icon';
+import { PlusIcon, CheckmarkIcon } from 'root/components/Icon';
 import { useCtx } from 'root/utils/context';
 
 const SearchPage = () => {
@@ -42,6 +42,16 @@ const SearchPage = () => {
   };
   const disableShowProduct = () => _setShowProduct(false);
 
+  const productAdded = id => {
+    const result = shoppingCart.find(item => {
+      return item['Product ID'] === id;
+    });
+    if (result) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <>
       <View {...styles.container}>
@@ -52,13 +62,22 @@ const SearchPage = () => {
             <SearchCard
               m={4}
               productInfo={productInfo}
-              key={productInfo.id}
+              key={productInfo['Product ID']}
               pressAction={() => enableShowProduct(productInfo)}>
-              <IconButton
-                icon={<Icon as={PlusIcon} style={{ textAlign: 'center' }} />}
-                borderRadius="full"
-                onPress={() => addToShoppingCart(productInfo)}
-              />
+              {productAdded(productInfo['Product ID']) ? (
+                <IconButton
+                  icon={
+                    <Icon as={CheckmarkIcon} style={{ textAlign: 'center' }} />
+                  }
+                  borderRadius="full"
+                />
+              ) : (
+                <IconButton
+                  icon={<Icon as={PlusIcon} style={{ textAlign: 'center' }} />}
+                  borderRadius="full"
+                  onPress={() => addToShoppingCart(productInfo)}
+                />
+              )}
             </SearchCard>
           ))}
         </ScrollView>
@@ -66,10 +85,11 @@ const SearchPage = () => {
           showProduct={showProduct}
           disableShowProduct={disableShowProduct}
           productInfo={clickedProductInfo}>
-          <Pressable onPress={() => {
-            addToShoppingCart(clickedProductInfo);
-            disableShowProduct();
-          }}>
+          <Pressable
+            onPress={() => {
+              addToShoppingCart(clickedProductInfo);
+              disableShowProduct();
+            }}>
             {pressableEvents => (
               <Box {...styles.addToCartButton}>Add to Cart</Box>
             )}

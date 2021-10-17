@@ -8,16 +8,16 @@ export const useCtx = () => useContext(Ctx);
 const CtxProvider = ({ children }) => {
   const [shoppingCart, _setShoppingCart] = useState([
     {
-      'Aisle': 3,
-      'Category': 'cat',
-      'Description': 'desc',
+      Aisle: 3,
+      Category: 'cat',
+      Description: 'desc',
       'Image URL': 'http',
       'Old Price': '',
-      'Price': '$69',
-      'Product': 'ur mom',
+      Price: '$69',
+      Product: 'ur mom',
       'Product ID': '6969',
-      'Product URL': 'http'
-    }
+      'Product URL': 'http',
+    },
   ]);
   const addToShoppingCart = useCallback(
     newItem => {
@@ -28,23 +28,24 @@ const CtxProvider = ({ children }) => {
   const removeFromShoppingCart = useCallback(
     itemId => {
       _setShoppingCart(prevShoppingCart => {
-        return prevShoppingCart.filter(item => item.id != itemId);
+        return prevShoppingCart.filter(item => item['Product ID'] !== itemId);
       });
     },
     [shoppingCart, _setShoppingCart],
   );
   const [searchResults, setSearchResults] = useState([
     {
-      'Aisle': 3,
-      'Category': 'cat',
-      'Description': 'desc',
+      Aisle: 3,
+      Category: 'cat',
+      Description: 'desc',
       'Image URL': 'https://wallpaperaccess.com/full/317501.jpg',
       'Old Price': '',
-      'Price': '$69',
-      'Product': 'ur mom gay lmaooasodasdaslkdjasldjadlkasjdlksajalkdsjdklsjlkasjd',
+      Price: '$69',
+      Product:
+        'ur mom gay lmaooasodasdaslkdjasldjadlkasjdlksajalkdsjdklsjlkasjd',
       'Product ID': '6969',
-      'Product URL': 'http'
-    }
+      'Product URL': 'http',
+    },
   ]);
 
   const defaultContext = {

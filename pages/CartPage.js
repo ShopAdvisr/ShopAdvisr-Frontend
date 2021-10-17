@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { NativeBaseProvider, View, Box, Heading, ScrollView, Icon, IconButton, Pressable } from 'native-base';
+import {
+  NativeBaseProvider,
+  View,
+  Box,
+  Heading,
+  ScrollView,
+  Icon,
+  IconButton,
+  Pressable,
+} from 'native-base';
 import { NativeRouter, Route, Link } from 'react-router-native';
 import { useCtx } from 'root/utils/context';
 import SearchCard from 'root/components/SearchCard';
@@ -7,10 +16,7 @@ import ProductInfo from 'root/components/ProductInfo';
 import { DeleteIcon } from 'root/components/Icon';
 
 const CartPage = () => {
-  const {
-    shoppingCart,
-    removeFromShoppingCart,
-  } = useCtx();
+  const { shoppingCart, removeFromShoppingCart } = useCtx();
 
   const [showProduct, _setShowProduct] = useState(false);
   const [clickedProductInfo, setClickedProductInfo] = useState({});
@@ -30,12 +36,13 @@ const CartPage = () => {
               m={4}
               productInfo={productInfo}
               key={productInfo.id}
-              pressAction={() => enableShowProduct(productInfo)}
-            >
+              pressAction={() => enableShowProduct(productInfo)}>
               <IconButton
                 icon={<Icon as={DeleteIcon} style={{ textAlign: 'center' }} />}
                 borderRadius="full"
-                onPress={() => removeFromShoppingCart(productInfo.id)}
+                onPress={() =>
+                  removeFromShoppingCart(productInfo['Product ID'])
+                }
               />
             </SearchCard>
           ))}
@@ -43,12 +50,12 @@ const CartPage = () => {
         <ProductInfo
           showProduct={showProduct}
           disableShowProduct={disableShowProduct}
-          productInfo={clickedProductInfo}
-        >
-          <Pressable onPress={() => {
-            removeFromShoppingCart(clickedProductInfo.id);
-            disableShowProduct();
-          }}>
+          productInfo={clickedProductInfo}>
+          <Pressable
+            onPress={() => {
+              removeFromShoppingCart(clickedProductInfo['Product ID']);
+              disableShowProduct();
+            }}>
             {pressableEvents => (
               <Box {...styles.removeFromCartButton}>Remove from Cart</Box>
             )}
@@ -61,7 +68,7 @@ const CartPage = () => {
 
 const styles = {
   container: {
-    p: 4
+    p: 4,
   },
   scrollContainer: {
     h: '85%',
@@ -76,14 +83,14 @@ const styles = {
     px: 10,
     _text: {
       textAlign: 'center',
-      color: 'muted.50'
+      color: 'muted.50',
     },
     bg: {
       linearGradient: {
         colors: ['primary.300', 'violet.800'],
         start: [0, 0],
-        end: [1, 1]
-      }
+        end: [1, 1],
+      },
     },
   },
 };
