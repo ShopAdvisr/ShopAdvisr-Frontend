@@ -49,6 +49,7 @@ const ProductInfo = props => {
                 size="lg"
                 {...styles.productImage}
               />
+
               <View maxWidth="70%">
                 <Text {...styles.productTitle}>{productInfo.Product}</Text>
                 <Text {...styles.productCategory}>{productInfo.Category}</Text>
@@ -60,11 +61,13 @@ const ProductInfo = props => {
             </HStack>
             <View {...styles.productDescription}>
               <Center>
-              {productInfo['Old Price'] !== '' && (
-                <Text>Sale! Was Originally {productInfo['Old Price']}</Text>
-              )}
-              <Text lineHeight={13} fontSize={11}>{productInfo.Description}</Text>
-              {/*<Text>Product URL: {productInfo['Product URL']}</Text>*/}
+                {productInfo['Old Price'] !== '' && (
+                  <Text>Sale! Was Originally {productInfo['Old Price']}</Text>
+                )}
+                <Text lineHeight={13} fontSize={11}>
+                  {productInfo.Description}
+                </Text>
+                {/*<Text>Product URL: {productInfo['Product URL']}</Text>*/}
               </Center>
             </View>
             <View pt={2} px={7}>
@@ -87,20 +90,20 @@ const styles = {
     noOfLines: 3,
     fontSize: 'lg',
     fontWeight: 'semibold',
-    lineHeight: 18
+    lineHeight: 18,
   },
   productDescription: {
     p: 2,
-    mt: 2
+    mt: 2,
   },
   productCategory: {
-    color: 'muted.400'
+    color: 'muted.400',
   },
   modalContainer: {
     mt: Dimensions.get('window').height * 0.4,
     h: Dimensions.get('window').height * 0.6,
     w: Dimensions.get('window').width,
-    px: 2
+    px: 2,
   },
   topBar: {
     flexDirection: 'row',

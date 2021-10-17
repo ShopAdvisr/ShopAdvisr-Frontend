@@ -85,15 +85,17 @@ const SearchPage = () => {
           showProduct={showProduct}
           disableShowProduct={disableShowProduct}
           productInfo={clickedProductInfo}>
-          <Pressable
-            onPress={() => {
-              addToShoppingCart(clickedProductInfo);
-              disableShowProduct();
-            }}>
-            {pressableEvents => (
-              <Box {...styles.addToCartButton}>Add to Cart</Box>
-            )}
-          </Pressable>
+          {!productAdded(clickedProductInfo['Product ID']) && (
+            <Pressable
+              onPress={() => {
+                addToShoppingCart(clickedProductInfo);
+                disableShowProduct();
+              }}>
+              {pressableEvents => (
+                <Box {...styles.addToCartButton}>Add to Cart</Box>
+              )}
+            </Pressable>
+          )}
         </ProductInfo>
       </View>
     </>

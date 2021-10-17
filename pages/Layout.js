@@ -9,7 +9,7 @@ import {
   Icon,
   IconButton,
   Center,
-  Box
+  Box,
 } from 'native-base';
 import {
   NativeRouter,
@@ -27,34 +27,38 @@ const Layout = ({ children, location }) => {
 
   return (
     <View {...styles.container}>
-      {location?.pathname != "/" && (<View>
-        <Box {...styles.vanityBar}></Box>
+      {location?.pathname != '/' && (
         <View>
-          <BackButton />
-          <View {...styles.headerContainer}>
-            <Center mr="auto">
-              <IconButton
-                onPress={() => history.goBack()}
-                icon={<Icon as={BackIcon} />}
-                borderRadius="full"
-              />
-            </Center>
-            {location?.pathname != "/cart" && (<Center>
-              <IconButton
-                onPress={() => history.push('/cart')}
-                icon={<Icon as={ShoppingCartIcon} />}
-                borderRadius="full"
-              />
-            </Center>)}
-            <Center>
-              <IconButton
-                icon={<Icon as={SettingsIcon} />}
-                borderRadius="full"
-              />
-            </Center>
+          <Box {...styles.vanityBar} />
+          <View>
+            <BackButton />
+            <View {...styles.headerContainer}>
+              <Center mr="auto">
+                <IconButton
+                  onPress={() => history.goBack()}
+                  icon={<Icon as={BackIcon} />}
+                  borderRadius="full"
+                />
+              </Center>
+              {location?.pathname != '/cart' && (
+                <Center>
+                  <IconButton
+                    onPress={() => history.push('/cart')}
+                    icon={<Icon as={ShoppingCartIcon} />}
+                    borderRadius="full"
+                  />
+                </Center>
+              )}
+              <Center>
+                <IconButton
+                  icon={<Icon as={SettingsIcon} />}
+                  borderRadius="full"
+                />
+              </Center>
+            </View>
           </View>
         </View>
-      </View>)}
+      )}
 
       <CtxProvider>
         <View {...styles.viewContainer}>{children}</View>
@@ -69,18 +73,18 @@ const styles = {
       linearGradient: {
         colors: ['shopadvisr.lightblue', 'shopadvisr.darkblue'],
         start: [0, 0],
-        end: [1, 1]
-      }
+        end: [1, 1],
+      },
     },
     h: 5,
-    shadow: 9
+    shadow: 9,
   },
   container: {
     backgroundColor: 'white',
     m: 0,
     p: 0,
-    w: "100%",
-    h: "100%"
+    w: '100%',
+    h: '100%',
   },
   headerContainer: {
     mt: 2,

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Defs, LinearGradient, Stop } from 'react-native-svg';
 import { LineChart, Grid } from 'react-native-svg-charts';
+import * as shape from 'd3-shape';
 
 class GradientLineExample extends React.Component {
   render() {
-    const data = this.props.data.slice(2).slice(-30);
+    const data = this.props.data.slice(2).slice(-20);
 
     const Gradient = () => (
       <Defs key={'gradient'}>
@@ -20,6 +21,7 @@ class GradientLineExample extends React.Component {
         style={{ height: 200 }}
         data={data}
         contentInset={{ top: 20, bottom: 20 }}
+        curve={shape.curveNatural}
         svg={{
           strokeWidth: 2,
           stroke: 'url(#gradient)',

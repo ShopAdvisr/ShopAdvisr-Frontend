@@ -23,13 +23,15 @@ const CtxProvider = ({ children }) => {
   );
   const [searchResults, setSearchResults] = useState([
     {
-      'Aisle': 3,
-      'Category': 'Food & Drink',
-      'Description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`',
+      Aisle: 3,
+      Category: 'Food & Drink',
+      Description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`',
       'Image URL': 'https://wallpaperaccess.com/full/317501.jpg',
       'Old Price': '',
-      'Price': '$69',
-      'Product': 'Lil soups with socket in a velety chicken food complement',
+      Price: '$69',
+
+      Product: 'Lil soups with socket in a velety chicken food complement',
       'Product ID': '6969',
       'Product URL': 'http',
     },
