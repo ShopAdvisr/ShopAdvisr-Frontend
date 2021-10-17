@@ -36,6 +36,9 @@ const ProductInfo = props => {
                   borderRadius="full"
                 />
               </Center>
+              <Center pr={2}>
+                <Text>Aisle {productInfo.Aisle}</Text>
+              </Center>
             </View>
             <View {...styles.productOverviewContainer}>
               <Image
@@ -43,23 +46,30 @@ const ProductInfo = props => {
                   uri: productInfo['Image URL'],
                 }}
                 alt="Item"
-                size="xl"
+                size="lg"
                 {...styles.productImage}
               />
-              <View w="auto">
-                <Heading size="lg">{productInfo.Product}</Heading>
-                <Text>Product ID {productInfo['Product ID']}</Text>
-                {productInfo['Old Price'] !== '' && (
-                  <Text>Sale! Was Originally {productInfo['Old Price']}</Text>
-                )}
-                <Text>Product Price {productInfo.Price}</Text>
-                <Text>Product Description {productInfo.Description}</Text>
-                <Text>Product URL {productInfo['Product URL']}</Text>
-                <Text>Category {productInfo.Category}</Text>
-                <Text>Aisle {productInfo.Aisle}</Text>
+              <View maxWidth="70%">
+                <Text {...styles.productTitle}>{productInfo.Product}</Text>
+                <Text {...styles.productCategory}>{productInfo.Category}</Text>
               </View>
             </View>
-            <Center>{children}</Center>
+            {/*<View style={{borderBottomColor: 'black', borderBottomWidth: 1}}/>*/}
+            <HStack space={3} pl={2} pt={1}>
+              <Text fontWeight="bold">{productInfo.Price}</Text>
+            </HStack>
+            <View {...styles.productDescription}>
+              <Center>
+              {productInfo['Old Price'] !== '' && (
+                <Text>Sale! Was Originally {productInfo['Old Price']}</Text>
+              )}
+              <Text lineHeight={13} fontSize={11}>{productInfo.Description}</Text>
+              {/*<Text>Product URL: {productInfo['Product URL']}</Text>*/}
+              </Center>
+            </View>
+            <View pt={2} px={7}>
+              {children}
+            </View>
           </VStack>
         </Modal.Content>
       </Modal>
@@ -69,22 +79,37 @@ const ProductInfo = props => {
 
 const styles = {
   productImage: {
-    borderRadius: 1000,
+    borderRadius: 5,
+    m: 0,
     mr: 4,
+  },
+  productTitle: {
+    noOfLines: 3,
+    fontSize: 'lg',
+    fontWeight: 'semibold',
+    lineHeight: 18
+  },
+  productDescription: {
+    p: 2,
+    mt: 2
+  },
+  productCategory: {
+    color: 'muted.400'
   },
   modalContainer: {
     mt: Dimensions.get('window').height * 0.4,
     h: Dimensions.get('window').height * 0.6,
     w: Dimensions.get('window').width,
+    px: 2
   },
   topBar: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
   },
   productOverviewContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    m: 3,
+    mx: 2,
   },
   addToCartButton: {
     borderRadius: 1000,

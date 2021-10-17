@@ -49,6 +49,7 @@ const styles = {
   cardText: {
     pl: 3,
     noOfLines: 1,
+    textAlign: 'center',
   },
   cardProfile: {
     borderRadius: 1000,

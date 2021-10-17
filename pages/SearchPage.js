@@ -121,7 +121,7 @@ const styles = {
     },
     bg: {
       linearGradient: {
-        colors: ['primary.300', 'violet.800'],
+        colors: ['shopadvisr.lightblue', 'shopadvisr.darkblue'],
         start: [0, 0],
         end: [1, 1],
       },
