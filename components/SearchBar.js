@@ -174,11 +174,13 @@ const SearchBar = props => {
                   history.push('/camera');
                 }}
                 borderRadius="full"
-                mr={-2}
-              >
+                mr={-2}>
                 <Icon as={CameraIcon} style={{ textAlign: 'center' }} />
               </IconButton>
-              <IconButton onPress={() => clickRecord()} borderRadius="full"  transform={[{ scale: 0.8 }]}>
+              <IconButton
+                onPress={() => clickRecord()}
+                borderRadius="full"
+                transform={[{ scale: 0.8 }]}>
                 <Icon as={MicrophoneIcon} style={{ textAlign: 'center' }} />
               </IconButton>
             </Flex>
