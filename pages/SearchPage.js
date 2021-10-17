@@ -23,9 +23,7 @@ const SearchPage = () => {
     { id: 13, name: 'orz' },
   ];
 
-  const {
-    shoppingCart
-  } = useCtx();
+  const { shoppingCart } = useCtx();
 
   const [showProduct, _setShowProduct] = useState(false);
   const [clickedProductInfo, setClickedProductInfo] = useState({});
@@ -41,7 +39,7 @@ const SearchPage = () => {
       <View {...styles.container}>
         <Text>{shoppingCart.length}</Text>
         <SearchBar />
-        <ScrollView h="92%" p={2} _contentContainerStyle={{ padding: 4 }}>
+        <ScrollView h="87%" p={2} _contentContainerStyle={{ padding: 4 }}>
           {dummySearchResults.map(result => (
             <SearchCard
               m={4}
