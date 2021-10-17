@@ -39,7 +39,7 @@ const SearchPage = () => {
       <View {...styles.container}>
         <Heading size="xl">Search</Heading>
         <SearchBar />
-        <ScrollView h="87%" p={2} _contentContainerStyle={{ padding: 4 }}>
+        <ScrollView {...styles.scrollContainer}>
           {dummySearchResults.map(result => (
             <SearchCard
               m={4}
@@ -62,7 +62,7 @@ const SearchPage = () => {
 const styles = {
   container: {},
   scrollContainer: {
-    h: '92%',
+    h: '87%',
     m: 0,
     _contentContainerStyle: {
       padding: 2,
