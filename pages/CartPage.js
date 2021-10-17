@@ -7,13 +7,15 @@ import {
   ScrollView,
   Icon,
   IconButton,
+  Center,
+  Text,
   Pressable,
 } from 'native-base';
 import { NativeRouter, Route, Link } from 'react-router-native';
 import { useCtx } from 'root/utils/context';
 import SearchCard from 'root/components/SearchCard';
 import ProductInfo from 'root/components/ProductInfo';
-import { DeleteIcon } from 'root/components/Icon';
+import { DeleteIcon, SparkleIcon } from 'root/components/Icon';
 
 const CartPage = () => {
   const { shoppingCart, removeFromShoppingCart } = useCtx();
@@ -46,6 +48,14 @@ const CartPage = () => {
               />
             </SearchCard>
           ))}
+          {shoppingCart.length == 0 && (
+            <View mt="60%">
+              <Center>
+                <SparkleIcon />
+                <Text color="#a3a3a3">no items in your cart</Text>
+              </Center>
+            </View>
+          )}
         </ScrollView>
         <ProductInfo
           showProduct={showProduct}

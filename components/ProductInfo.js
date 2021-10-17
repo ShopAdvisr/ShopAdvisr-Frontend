@@ -57,17 +57,20 @@ const ProductInfo = props => {
             </View>
             {/*<View style={{borderBottomColor: 'black', borderBottomWidth: 1}}/>*/}
             <HStack space={3} pl={2} pt={1}>
-              <Text fontWeight="bold">{productInfo.Price}</Text>
+              {productInfo['Old Price'] == '' ? (
+                <Text fontWeight="bold">{productInfo.Price}</Text>
+              ) : (
+                <HStack space={2}>
+                  <Text strikeThrough={true}>{productInfo['Old Price']}</Text>
+                  <Text fontWeight="bold" color="rose.500">{productInfo.Price}</Text>
+                </HStack>
+              )}
             </HStack>
             <View {...styles.productDescription}>
               <Center>
-                {productInfo['Old Price'] !== '' && (
-                  <Text>Sale! Was Originally {productInfo['Old Price']}</Text>
-                )}
                 <Text lineHeight={13} fontSize={11}>
                   {productInfo.Description}
                 </Text>
-                {/*<Text>Product URL: {productInfo['Product URL']}</Text>*/}
               </Center>
             </View>
             <View pt={2} px={7}>
