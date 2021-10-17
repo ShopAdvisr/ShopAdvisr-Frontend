@@ -10,8 +10,12 @@ import {
   Text,
 } from 'native-base';
 import { PlusIcon } from 'root/components/Icon';
+import { useCtx } from 'root/utils/context';
 
 const SearchCard = ({ productInfo, enableShowProduct }) => {
+  const {
+    addToShoppingCart 
+  } = useCtx();
 
   return (
     <>
@@ -30,6 +34,7 @@ const SearchCard = ({ productInfo, enableShowProduct }) => {
               <IconButton
                 icon={<Icon as={PlusIcon} style={{ textAlign: 'center' }} />}
                 borderRadius="full"
+                onPress={() => addToShoppingCart(productInfo)}
               />
             </Center>
           </Box>

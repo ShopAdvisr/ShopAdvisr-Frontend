@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, ScrollView } from 'native-base';
+import { View, ScrollView, Text } from 'native-base';
 import SearchCard from 'root/components/SearchCard';
 import SearchBar from 'root/components/SearchBar';
 import ProductInfo from 'root/components/ProductInfo';
 import Graph from 'root/components/Line-chart';
+import { useCtx } from 'root/utils/context';
 
 const SearchPage = () => {
   const dummySearchResults = [
@@ -22,6 +23,10 @@ const SearchPage = () => {
     { id: 13, name: 'orz' },
   ];
 
+  const {
+    shoppingCart
+  } = useCtx();
+
   const [showProduct, _setShowProduct] = useState(false);
   const [clickedProductInfo, setClickedProductInfo] = useState({});
   const enableShowProduct = productInfo => {
@@ -34,6 +39,7 @@ const SearchPage = () => {
   return (
     <>
       <View {...styles.container}>
+        <Text>{shoppingCart.length}</Text>
         <SearchBar />
         <ScrollView h="92%" p={2} _contentContainerStyle={{ padding: 4 }}>
           {dummySearchResults.map(result => (

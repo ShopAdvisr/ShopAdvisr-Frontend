@@ -18,9 +18,11 @@ import {
   useHistory,
 } from 'react-router-native';
 import { BackIcon } from 'root/components/Icon';
+import CtxProvider from 'root/utils/context';
 
 const Layout = ({ children }) => {
   const history = useHistory();
+
   return (
     <>
       <View {...styles.container} w="100%" h="100%">
@@ -34,8 +36,10 @@ const Layout = ({ children }) => {
             />
           </Center>
         </View>
-
-        <View {...styles.viewContainer}>{children}</View>
+        
+        <CtxProvider>
+          <View {...styles.viewContainer}>{children}</View>
+         </CtxProvider>
       </View>
     </>
   );

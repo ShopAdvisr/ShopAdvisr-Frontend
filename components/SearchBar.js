@@ -148,7 +148,7 @@ const SearchBar = props => {
               <IconButton onPress={() => clickRecord()} borderRadius="full">
                 <Icon as={MicrophoneIcon} style={{ textAlign: 'center' }} />
               </IconButton>
-              <IconButton onPress={() => {console.log('clicked camera'); history.push('/camera');}} borderRadius="full">
+              <IconButton onPress={() => {console.log('clicked camera'); history.push('/cart');}} borderRadius="full">
                 <Icon as={CameraIcon} style={{ textAlign: 'center' }} />
               </IconButton>
             </Flex>
