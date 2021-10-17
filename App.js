@@ -16,7 +16,6 @@ const nativeBaseConfig = {
 };
 
 console.disableYellowBox = true;
-
 LogBox.ignoreLogs(['Warning: ...']);
 
 export default function App() {
@@ -24,7 +23,7 @@ export default function App() {
     <NativeRouter>
       <NativeBaseProvider config={nativeBaseConfig}>
         <Layout>
-          <Route exact path="/" component={SearchPage} />
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/cart" component={CartPage} />
           <Route exact path="/settings" component={SettingsPage} />

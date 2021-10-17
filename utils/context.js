@@ -7,6 +7,7 @@ export const useCtx = () => useContext(Ctx);
 
 const CtxProvider = ({ children }) => {
   const [shoppingCart, _setShoppingCart] = useState([]);
+<<<<<<< HEAD
   const addToShoppingCart = useCallback(
     newItem => {
       _setShoppingCart(prevShoppingCart => [...prevShoppingCart, newItem]);
@@ -22,6 +23,19 @@ const CtxProvider = ({ children }) => {
     [shoppingCart, _setShoppingCart],
   );
   const [searchResults, setSearchResults] = useState([]);
+=======
+  const addToShoppingCart = useCallback(newItem => {
+    _setShoppingCart(prevShoppingCart => [
+      newItem,
+      ...prevShoppingCart,
+    ]);
+  }, [shoppingCart, _setShoppingCart]);
+  const removeFromShoppingCart = useCallback(itemId => {
+    _setShoppingCart(prevShoppingCart => {
+      return prevShoppingCart.filter(item => item.id != itemId);
+    });
+  }, [shoppingCart, _setShoppingCart]);
+>>>>>>> cdd7704385b6706d9386545876a56609c92b8e54
 
   const defaultContext = {
     shoppingCart,

@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Heading, Text } from 'native-base';
+import {
+  View,
+  ScrollView,
+  Heading,
+  Text,
+  Icon,
+  IconButton,
+  Box,
+  Pressable,
+} from 'native-base';
 import SearchCard from 'root/components/SearchCard';
 import SearchBar from 'root/components/SearchBar';
 import ProductInfo from 'root/components/ProductInfo';
 import Graph from 'root/components/Line-chart';
+import { PlusIcon } from 'root/components/Icon';
 import { useCtx } from 'root/utils/context';
 
 const SearchPage = () => {
-  const { shoppingCart, searchResults } = useCtx();
+  const { shoppingCart, searchResults, addToShoppingCart } = useCtx();
   const dummySearchResults = [
     { id: 1, name: 'apple' },
     { id: 2, name: 'bread' },
@@ -30,7 +40,6 @@ const SearchPage = () => {
     _setShowProduct(true);
     setClickedProductInfo(productInfo);
   };
-
   const disableShowProduct = () => _setShowProduct(false);
 
   return (
@@ -39,32 +48,60 @@ const SearchPage = () => {
         <Heading size="xl">Search</Heading>
         <SearchBar />
         <ScrollView {...styles.scrollContainer}>
-          {searchResults.map(result => (
+          {searchResults.map(productInfo => (
             <SearchCard
               m={4}
-              productInfo={result}
-              key={result.id}
-              enableShowProduct={enableShowProduct}
-            />
+              productInfo={productInfo}
+              key={productInfo.id}
+              pressAction={() => enableShowProduct(productInfo)}>
+              <IconButton
+                icon={<Icon as={PlusIcon} style={{ textAlign: 'center' }} />}
+                borderRadius="full"
+                onPress={() => addToShoppingCart(productInfo)}
+              />
+            </SearchCard>
           ))}
         </ScrollView>
         <ProductInfo
           showProduct={showProduct}
           disableShowProduct={disableShowProduct}
-          productInfo={clickedProductInfo}
-        />
+          productInfo={clickedProductInfo}>
+          <Pressable onPress={() => addToShoppingCart(clickedProductInfo)}>
+            {pressableEvents => (
+              <Box {...styles.addToCartButton}>Add to Cart</Box>
+            )}
+          </Pressable>
+        </ProductInfo>
       </View>
     </>
   );
 };
 
 const styles = {
-  container: {},
+  container: {
+    p: 4,
+  },
   scrollContainer: {
     h: '85%',
     m: 0,
     _contentContainerStyle: {
       padding: 2,
+    },
+  },
+  addToCartButton: {
+    borderRadius: 1000,
+    p: 2,
+    px: 10,
+    _text: {
+      textAlign: 'center',
+      color: 'muted.50',
+    },
+    bg: {
+      linearGradient: {
+        colors: ['primary.300', 'violet.800'],
+        start: [0, 0],
+        end: [1, 1],
+      },
     },
   },
 };

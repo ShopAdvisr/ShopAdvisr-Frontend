@@ -17,7 +17,14 @@ import {
 } from 'native-base';
 import { CloseIcon } from 'root/components/Icon';
 
-const ProductInfo = ({ productInfo, showProduct, disableShowProduct }) => {
+const ProductInfo = props => {
+  const {
+    children,
+    productInfo,
+    showProduct,
+    disableShowProduct
+  } = props;
+
   return (
     <>
       <Modal
@@ -58,7 +65,7 @@ const ProductInfo = ({ productInfo, showProduct, disableShowProduct }) => {
               </View>
             </View>
             <Center>
-              <Box {...styles.addToCartButton}>Add to Cart</Box>
+              {children}
             </Center>
           </VStack>
         </Modal.Content>
@@ -86,6 +93,7 @@ const styles = {
     justifyContent: 'flex-start',
     m: 3,
   },
+<<<<<<< HEAD
   addToCartButton: {
     borderRadius: 1000,
     w: '50%',
@@ -102,6 +110,8 @@ const styles = {
       },
     },
   },
+=======
+>>>>>>> cdd7704385b6706d9386545876a56609c92b8e54
 };
 
 export default ProductInfo;
