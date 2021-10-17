@@ -14,11 +14,17 @@ import SearchCard from 'root/components/SearchCard';
 import SearchBar from 'root/components/SearchBar';
 import ProductInfo from 'root/components/ProductInfo';
 import Graph from 'root/components/Line-chart';
-import { PlusIcon, CheckmarkIcon, SadIcon, LightningIcon } from 'root/components/Icon';
+import {
+  PlusIcon,
+  CheckmarkIcon,
+  SadIcon,
+  LightningIcon,
+} from 'root/components/Icon';
 import { useCtx } from 'root/utils/context';
 
 const SearchPage = () => {
-  const { shoppingCart, searchResults, addToShoppingCart, searchText } = useCtx();
+  const { shoppingCart, searchResults, addToShoppingCart, searchText } =
+    useCtx();
   const dummySearchResults = [
     { id: 1, name: 'apple' },
     { id: 2, name: 'bread' },
@@ -54,22 +60,26 @@ const SearchPage = () => {
   };
 
   const displaySearchMessage = () => {
-    if (searchResults.length > 0) return null;
+    if (searchResults.length > 0) {
+      return null;
+    }
 
     return (
       <View mt="50%">
-        {searchText.length == 0 ?
-          (<Center>
+        {searchText.length == 0 ? (
+          <Center>
             <LightningIcon />
-            <Text color="#a3a3a3">trying search something</Text>
-          </Center>) :
-          (<Center>
+            <Text color="#a3a3a3">try to search something</Text>
+          </Center>
+        ) : (
+          <Center>
             <SadIcon />
             <Text color="#a3a3a3">no results found...</Text>
-          </Center>)}
+          </Center>
+        )}
       </View>
     );
-  }
+  };
 
   return (
     <>
