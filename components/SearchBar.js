@@ -49,9 +49,13 @@ const SearchBar = props => {
     const hideSubscription = Keyboard.addListener(
       'keyboardDidHide',
       async () => {
-        const res = await textSearch(searchText);
-        setSearchResults([]);
-        setSearchResults(res.items);
+        try {
+          const res = await textSearch(searchText);
+          setSearchResults([]);
+          setSearchResults(res.items);
+        } catch (err) {
+          console.log(err);
+        }
       },
     );
 
