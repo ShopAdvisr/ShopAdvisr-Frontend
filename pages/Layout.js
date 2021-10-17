@@ -17,7 +17,7 @@ import {
   BackButton,
   useHistory,
 } from 'react-router-native';
-import { BackIcon } from 'root/components/Icon';
+import { BackIcon, ShoppingCartIcon } from 'root/components/Icon';
 import CtxProvider from 'root/utils/context';
 
 const Layout = ({ children }) => {
@@ -32,6 +32,13 @@ const Layout = ({ children }) => {
             <IconButton
               onPress={() => history.goBack()}
               icon={<Icon as={BackIcon} />}
+              borderRadius="full"
+            />
+          </Center>
+          <Center>
+            <IconButton
+              onPress={() => history.push('/cart')}
+              icon={<Icon as={ShoppingCartIcon} />}
               borderRadius="full"
             />
           </Center>
@@ -51,8 +58,9 @@ const styles = {
   },
   headerContainer: {
     mt: 4,
+    mx: 2,
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
   },
   viewContainer: {
     p: 4,

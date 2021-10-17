@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text } from 'native-base';
+import { View, ScrollView, Heading, Text } from 'native-base';
 import SearchCard from 'root/components/SearchCard';
 import SearchBar from 'root/components/SearchBar';
 import ProductInfo from 'root/components/ProductInfo';
@@ -37,7 +37,7 @@ const SearchPage = () => {
   return (
     <>
       <View {...styles.container}>
-        <Text>{shoppingCart.length}</Text>
+        <Heading size="xl">Search</Heading>
         <SearchBar />
         <ScrollView h="87%" p={2} _contentContainerStyle={{ padding: 4 }}>
           {dummySearchResults.map(result => (
@@ -63,10 +63,10 @@ const styles = {
   container: {},
   scrollContainer: {
     h: '92%',
-    p: 2,
-    bgColor: 'teal.100',
     m: 0,
-    px: 4,
+    _contentContainerStyle: {
+      padding: 2,
+    },
   },
 };
 
