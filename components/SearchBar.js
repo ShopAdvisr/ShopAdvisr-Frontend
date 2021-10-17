@@ -37,13 +37,11 @@ audioRecorderPlayer.setSubscriptionDuration(0.09);
 
 const SearchBar = props => {
   const history = useHistory();
-  const { setSearchResults } = useCtx();
+  const { setSearchResults, searchText, setSearchText } = useCtx();
 
   const [showModal, setShowModal] = useState(false);
-  const [searchText, setSearchText] = useState('');
   const [loading, setLoading] = useState(false);
   const [currentMetering, setCurrentMetering] = useState([]);
-  const [currentText, setCurrentText] = useState('');
 
   useEffect(() => {
     const hideSubscription = Keyboard.addListener(

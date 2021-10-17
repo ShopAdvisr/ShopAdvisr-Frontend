@@ -30,12 +30,13 @@ const CtxProvider = ({ children }) => {
     //   'Image URL': 'https://wallpaperaccess.com/full/317501.jpg',
     //   'Old Price': '',
     //   Price: '$69',
-
     //   Product: 'Lil soups with socket in a velety chicken food complement',
     //   'Product ID': '6969',
     //   'Product URL': 'http',
     // },
   ]);
+
+  const [searchText, setSearchText] = useState('');
 
   const defaultContext = {
     shoppingCart,
@@ -43,6 +44,8 @@ const CtxProvider = ({ children }) => {
     removeFromShoppingCart,
     searchResults,
     setSearchResults,
+    searchText,
+    setSearchText,
   };
 
   return <Ctx.Provider value={defaultContext}>{children}</Ctx.Provider>;
