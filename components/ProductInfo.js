@@ -18,12 +18,7 @@ import {
 import { CloseIcon } from 'root/components/Icon';
 
 const ProductInfo = props => {
-  const {
-    children,
-    productInfo,
-    showProduct,
-    disableShowProduct
-  } = props;
+  const { children, productInfo, showProduct, disableShowProduct } = props;
 
   return (
     <>
@@ -64,9 +59,7 @@ const ProductInfo = props => {
                 <Text>Aisle {productInfo.Aisle}</Text>
               </View>
             </View>
-            <Center>
-              {children}
-            </Center>
+            <Center>{children}</Center>
           </VStack>
         </Modal.Content>
       </Modal>
@@ -93,7 +86,6 @@ const styles = {
     justifyContent: 'flex-start',
     m: 3,
   },
-<<<<<<< HEAD
   addToCartButton: {
     borderRadius: 1000,
     w: '50%',
@@ -110,8 +102,6 @@ const styles = {
       },
     },
   },
-=======
->>>>>>> cdd7704385b6706d9386545876a56609c92b8e54
 };
 
 export default ProductInfo;
